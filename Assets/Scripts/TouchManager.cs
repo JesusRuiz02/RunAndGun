@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class TouchManager : MonoBehaviour
 {
+  private float _flightDurationInSeconds = 3;
   [SerializeField] private GameObject _player;
   [SerializeField] private Vector3 _bulletForce;
   [SerializeField] private GameObject _bullets;
@@ -33,15 +34,24 @@ public class TouchManager : MonoBehaviour
 
   private void TouchPressed(InputAction.CallbackContext context)
   {
-     Vector3 position = Camera.main.ScreenToWorldPoint(_touchPosition.ReadValue<Vector2>());
-     //position.z = _player.transform.position.z;
-     Debug.Log(position);
-     Shoot(position);
+    Debug.Log("hay touch");
+  /* Vector2 positionscreen = _touchPosition.ReadValue<Vector2>();
+    Debug.Log(positionscreen);*/
+    Vector3 position = _touchPosition.ReadValue<Vector2>();
+    position.z = _player.transform.position.z;
+    Debug.Log(position);
+    RaycastHit hit;
+    Ray ray = Camera.main.ScreenPointToRay(position);
+    if (Physics.Raycast(ray, out hit))
+    {
+      Shoot(hit.point);
+    }
+
   }
 
   private void Shoot(Vector3 position)
   {
     GameObject Projectile = Instantiate(_bullets, position, Quaternion.identity);
-    Projectile.GetComponent<Rigidbody>().AddForce(_bulletForce, ForceMode.Acceleration);
+    Projectile.GetComponent<Rigidbody>().velocity = ((position - transform.position) / _flightDurationInSeconds);
   }
 }
