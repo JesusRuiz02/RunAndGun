@@ -35,8 +35,6 @@ public class TouchManager : MonoBehaviour
   private void TouchPressed(InputAction.CallbackContext context)
   {
     Debug.Log("hay touch");
-  /* Vector2 positionscreen = _touchPosition.ReadValue<Vector2>();
-    Debug.Log(positionscreen);*/
     Vector3 position = _touchPosition.ReadValue<Vector2>();
     position.z = _player.transform.position.z;
     Debug.Log(position);
@@ -51,7 +49,16 @@ public class TouchManager : MonoBehaviour
 
   private void Shoot(Vector3 position)
   {
-    GameObject Projectile = Instantiate(_bullets, position, Quaternion.identity);
-    Projectile.GetComponent<Rigidbody>().velocity = ((position - transform.position) / _flightDurationInSeconds);
+
+
+    GameObject projectile = ObjectPool.instance.GetPooledObject();
+
+    if (projectile != null)
+    {
+      projectile.transform.position = _player.transform.position;
+      projectile.SetActive(true);
+      projectile.GetComponent<Rigidbody>().velocity = (position - transform.position) / 1.5f;
+    }
+    
   }
 }
