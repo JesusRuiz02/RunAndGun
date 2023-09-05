@@ -7,9 +7,15 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float secondsToDeactivate;
     private Rigidbody _rigidbody;
-    
-    
-   
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Balloon"))
+        {
+           DeactivateObject();
+        }
+    }
 
     private void OnEnable()
     {
