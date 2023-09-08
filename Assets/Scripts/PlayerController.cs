@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!_isInmune)
         {
-            if (_health > 2)
+            if (_health < 2)
             {
                 Debug.Log("Perdiste");
             }
