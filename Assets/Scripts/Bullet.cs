@@ -1,19 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float secondsToDeactivate;
     private Rigidbody _rigidbody;
-
-
+    [SerializeField] private AudioClip _popSFX = default;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Balloon"))
         {
+            PlayerController.instance.AddScore();
            DeactivateObject();
+           AudioManager.instance.PlaySFX(_popSFX);
+           Destroy(other.gameObject);
         }
     }
 
@@ -25,6 +24,7 @@ public class Bullet : MonoBehaviour
 
     private void OnDisable()
     {
+        CancelInvoke("DeactivateObject");
         _rigidbody.velocity = Vector3.zero;
     }
 

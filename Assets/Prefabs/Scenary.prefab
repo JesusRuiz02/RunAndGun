@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tile: {fileID: 1880236971363674495}
-  _setActive: 0
+  _speed: 10
 --- !u!65 &8338702180909362121
 BoxCollider:
   m_ObjectHideFlags: 0
