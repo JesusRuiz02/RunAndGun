@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnTile : MonoBehaviour
 {
+    
     private TilePool _tilePool;
 
     [SerializeField] private Transform _tilePosition = default;
@@ -14,8 +12,6 @@ public class SpawnTile : MonoBehaviour
     void Start()
     {
         _tilePool = TilePool._Instance;
-
- 
 
     }
     
@@ -34,6 +30,7 @@ public class SpawnTile : MonoBehaviour
         {
            // var newPosition = tiles.transform.Find("NextTilePos");
             tiles.transform.position = new Vector3(0, 0, 125f);
+            SpawnerBalloon.instance.CreateBalloons();
             tiles.SetActive(true);
         }
             

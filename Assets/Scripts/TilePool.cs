@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +20,6 @@ public class TilePool : MonoBehaviour
 
     void Start()
     {
-        // Primero, asegúrate de que haya al menos 10 objetos en la piscina
         for (int i = 0; i < _amountToPool; i++)
         {
             GameObject obj = Instantiate(_tilePrefab, gameObject.transform.position, gameObject.transform.rotation);

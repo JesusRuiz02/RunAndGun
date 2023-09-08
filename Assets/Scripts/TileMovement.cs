@@ -1,27 +1,24 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TileMovement : MonoBehaviour
 {
     [SerializeField] private Transform Tile = default;
-
+    [SerializeField] private float _speed = default;
    
 
     
    // private SpawnTile _spawnTile = default;
 
-    /*private void Start()
-    {
-        GameObject spawnPoint = GameObject.FindGameObjectWithTag("Respawn");
-        _spawnTile = spawnPoint.GetComponent<SpawnTile>();
-    }*/
+   private void Start()
+   {
+       _speed += PlayerController.instance.Score / 10 ;
+   }
 
 
-    public void Update()
+   public void Update()
     {
-        Tile.Translate(0,0, -3f * Time.deltaTime);
+        Tile.Translate(0,0, -_speed * Time.deltaTime);
 
         if (Tile.position.z <= -20f)
         {
