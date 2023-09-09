@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-    
+    [SerializeField] private GameObject canvasGameOver;
     [SerializeField] private float _health = 3;
     [SerializeField] private AudioClip _popSfx = default;
     [SerializeField] private float score = default;
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddScore()
     {
+        float resd = score % 20;
         score++;
     }
 
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
         {
             if (_health > 2)
             {
+                Time.timeScale = 0;
+                canvasGameOver.SetActive(true);
                 Debug.Log("Perdiste");
             }
             else
