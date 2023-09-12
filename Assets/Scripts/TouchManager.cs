@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -75,7 +72,6 @@ public class TouchManager : MonoBehaviour
 
     Vector3 forceToAdd = forceDirection * _throwForce + transform.up * _throwUpForce;
     
-    Debug.Log(forceToAdd);
     
     projectile.GetComponent<Rigidbody>().AddForce(forceToAdd, ForceMode.Impulse);
     

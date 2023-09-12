@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - Balloon
+  - Invisible
+  - Scenary
+  - End
+  - Spawn
   layers:
   - Default
   - TransparentFX
