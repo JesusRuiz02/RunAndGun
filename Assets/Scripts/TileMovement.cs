@@ -10,10 +10,10 @@ public class TileMovement : MonoBehaviour
     
    // private SpawnTile _spawnTile = default;
 
-   private void Start()
+ /*  private void Start()
    {
-       _speed += PlayerController.instance.Score / 10 ;
-   }
+       _speed += PlayerController.instance.Score;
+   }*/
 
 
    public void Update()

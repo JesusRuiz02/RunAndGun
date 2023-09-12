@@ -26,10 +26,6 @@ public class TilePool : MonoBehaviour
             obj.SetActive(false);
             _pooledObjects.Add(obj);
         }
-
-       
-
-       
     }
 
     public GameObject GetPooledObject()
