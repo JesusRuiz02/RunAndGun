@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 3
   _popSfx: {fileID: 8300000, guid: fa53c3233c089bf45816f85ea34a3426, type: 3}
+  score: 0
 --- !u!1 &339617595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 131458282}
-  _throwForce: 20
+  _throwForce: 30
   _throwUpForce: 5
   _bullets: {fileID: 3845976245264650845, guid: ced6a4700e02321449f6fcbd34311119, type: 3}
   _shotLayerMask:
