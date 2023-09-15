@@ -6,6 +6,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private Animator _animatorParent;
+    [SerializeField] private String _triggerString = "Open";
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-           _animatorParent.SetTrigger("Open");
+           _animatorParent.SetTrigger(_triggerString);
         }
     }
 }

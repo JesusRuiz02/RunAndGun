@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae52ddaead28164abb4b363215f5ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGameOver: {fileID: 0}
   _health: 3
   _popSfx: {fileID: 8300000, guid: fa53c3233c089bf45816f85ea34a3426, type: 3}
   score: 0
@@ -759,7 +760,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
