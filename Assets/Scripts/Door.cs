@@ -8,7 +8,7 @@ public class Door : MonoBehaviour
     private Animator _animatorParent;
     [SerializeField] private String _triggerString = "Open";
 
-    private void Start()
+    private void Awake()
     {
         _animatorParent = gameObject.transform.GetComponentInParent<Animator>();
     }
@@ -19,5 +19,15 @@ public class Door : MonoBehaviour
         {
            _animatorParent.SetTrigger(_triggerString);
         }
+    }
+
+    private void OnEnable()
+    {
+        _animatorParent.Play("Idle");
+    }
+
+    private void OnDisable()
+    {
+        TilePool._Instance.GetObjectBack(TilePool._Instance.PooledObjects, 0);
     }
 }

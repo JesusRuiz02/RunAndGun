@@ -25,8 +25,12 @@ public class PlayerController : MonoBehaviour
 
     public void AddScore()
     {
-        float resd = score % 20;
         score++;
+        float mod = score % 10;
+        if (mod == 0)
+        {
+            TilePool._Instance.BringObjectToFront(TilePool._Instance.PooledObjects,TilePool._Instance.PooledObjects.Count-1);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
