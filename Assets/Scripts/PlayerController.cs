@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _health = 3;
     [SerializeField] private AudioClip _popSfx = default;
     [SerializeField] private float score = default;
+    [SerializeField] private GameObject _powerUP = default;
     private bool _isInmune = default;
     private void Awake()
     {
@@ -40,6 +42,13 @@ public class PlayerController : MonoBehaviour
             Health();
             AudioManager.instance.PlaySFX(_popSfx);
         }
+
+        if (other.CompareTag("PowerUp"))
+        {
+            StartCoroutine(PowerUp());
+            //gameObject.
+            //sfx power up
+        }
     }
 
     private void Health()
@@ -58,5 +67,12 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+    }
+
+    IEnumerator PowerUp()
+    {
+        _isInmune = true;
+        yield return new WaitForSeconds(7.0f);
+        _isInmune = false;
     }
 }
