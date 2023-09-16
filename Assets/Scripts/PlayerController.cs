@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public void AddScore()
     {
         score++;
-        float mod = score % 20;
+        float mod = score % 10;
         if (mod == 0)
         {
             TilePool._Instance.BringObjectToFront(TilePool._Instance.PooledObjects,TilePool._Instance.PooledObjects.Count-1);

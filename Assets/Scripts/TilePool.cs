@@ -29,6 +29,7 @@ public class TilePool : MonoBehaviour
     public void GetObjectBack(List<GameObject> list, int index)
     {
         GameObject objectToMove = list[index];
+        print(objectToMove);
         list.RemoveAt(index);
         list.Insert(list.Count,objectToMove);
     }
