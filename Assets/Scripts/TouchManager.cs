@@ -33,16 +33,18 @@ public class TouchManager : MonoBehaviour
 
   private void TouchPressed(InputAction.CallbackContext context)
   {
-    Vector3 position = _touchPosition.ReadValue<Vector2>();
-    position.z = _player.transform.position.z;
-    RaycastHit hit;
-    Ray ray = Camera.main.ScreenPointToRay(position);
-    if (Physics.Raycast(ray, out hit))
+    if (Time.timeScale == 1)
     {
-      Debug.DrawLine(ray.origin, hit.point, Color.red);
-      CheckMag(hit.point);
+      Vector3 position = _touchPosition.ReadValue<Vector2>();
+      position.z = _player.transform.position.z;
+      RaycastHit hit;
+      Ray ray = Camera.main.ScreenPointToRay(position);
+      if (Physics.Raycast(ray, out hit))
+      {
+        Debug.DrawLine(ray.origin, hit.point, Color.red);
+        CheckMag(hit.point);
+      }
     }
-
   }
 
   private void CheckMag(Vector3 Targetposition)
