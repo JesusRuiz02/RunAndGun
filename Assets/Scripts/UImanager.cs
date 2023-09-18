@@ -13,23 +13,25 @@ public class UImanager : MonoBehaviour
     {
         _canvasGroup.alpha = 0f;
         _rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
-        _rectTransform.DOAnchorPos(new Vector2(0f, 0f), _fadeTime, false).SetEase(Ease.OutElastic);
-        _canvasGroup.DOFade(1, _fadeTime);
-        
+        TooglePause();
+        _rectTransform.DOAnchorPos(new Vector2(0f, 0f), _fadeTime, false).SetEase(Ease.OutElastic).SetUpdate(true);
+        _canvasGroup.DOFade(1, _fadeTime).SetUpdate(true);
     }
 
-    public void TooglePause()
+    private void TooglePause()
     {
         _isPause = !_isPause;
-        Time.timeScale = _isPause ? 0 : 1;
+        int scaleTime = _isPause ? 0 : 1;
+        Time.timeScale = scaleTime;
     }
+    
     public void PanelFadeOut()
     {
         _canvasGroup.alpha = 1f;
         var sequence = DOTween.Sequence();
         _rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
-        sequence.Append(_rectTransform.DOAnchorPos(new Vector2(0f, -1000f), _fadeTime, false).SetEase(Ease.InOutQuint));
-        sequence.Append(_canvasGroup.DOFade(0, _fadeTime));
-        
+        _rectTransform.DOAnchorPos(new Vector2(0f, -1000f), _fadeTime, false).SetEase(Ease.InOutQuint).SetUpdate(true);
+        sequence.Append(_canvasGroup.DOFade(0, _fadeTime).SetUpdate(true));
+        sequence.AppendCallback(TooglePause).SetUpdate(true);
     }
 }
