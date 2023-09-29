@@ -1,9 +1,10 @@
-using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
+    [SerializeField] private float _throwForce;
+    [SerializeField] private float _throwUpForce;
     [SerializeField] private GameObject canvasGameOver;
     [SerializeField] private float _health = 3;
     [SerializeField] private AudioClip _popSfx = default;
@@ -58,5 +59,20 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+    }
+    
+    public void Shoot(Vector3 Targetposition, GameObject projectile)
+    {
+        Vector3 forceDirection = transform.forward;
+    
+        forceDirection = (Targetposition - transform.position).normalized;
+
+        Vector3 forceToAdd = forceDirection * _throwForce + transform.up * _throwUpForce;
+    
+        // projectile.transform.LookAt(forceDirection);
+    
+        projectile.GetComponent<Rigidbody>().AddForce(forceToAdd, ForceMode.Impulse);
+    
+
     }
 }
