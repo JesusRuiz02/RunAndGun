@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -269,6 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae52ddaead28164abb4b363215f5ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _throwForce: 30
+  _throwUpForce: 5
   canvasGameOver: {fileID: 0}
   _health: 3
   _popSfx: {fileID: 8300000, guid: fa53c3233c089bf45816f85ea34a3426, type: 3}
@@ -1364,6 +1366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e9c2e13e8d0ce64fae53c952e5de1ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pooledObjects: []
   _bridgePrefab: {fileID: 1585415223480356613, guid: a1e128282f014e246bf16be34b8aabf7, type: 3}
   _tilePrefab: {fileID: 8265732224077354058, guid: 46ebd10772a13874aaab418d104749c1, type: 3}
 --- !u!114 &1228151055
@@ -1378,7 +1381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c124949b5299e468171a0dedbe16d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3845976245264650845, guid: ced6a4700e02321449f6fcbd34311119, type: 3}
+  bulletPrefab: {fileID: 8596104900386471847, guid: 870f764c3701854458f710b521f6efe3, type: 3}
 --- !u!1 &1276834195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,8 +1817,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 131458282}
-  _throwForce: 30
-  _throwUpForce: 5
   _bullets: {fileID: 3845976245264650845, guid: ced6a4700e02321449f6fcbd34311119, type: 3}
   _shotLayerMask:
     serializedVersion: 2
