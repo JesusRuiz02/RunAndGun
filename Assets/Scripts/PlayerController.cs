@@ -45,6 +45,13 @@ public class PlayerController : MonoBehaviour
         {
             TilePool._Instance.BringObjectToFront(TilePool._Instance.PooledObjects,TilePool._Instance.PooledObjects.Count-1);
         }
+
+        float modPowerUp = score % 20;
+
+        if (modPowerUp == 0)
+        {
+            SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.PowerUp);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,13 +60,13 @@ public class PlayerController : MonoBehaviour
         {
             Health();
             AudioManager.instance.PlaySFX(_popSfx);
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
 
         if (other.CompareTag("PowerUp"))
         {
             StartCoroutine(PowerUp());
-            Destroy(other.gameObject);
+           other.gameObject.SetActive(false);
             //gameObject.
             //sfx power up
         }

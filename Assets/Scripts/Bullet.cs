@@ -9,10 +9,10 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Balloon"))
         {
-            PlayerController.instance.AddScore();
+           PlayerController.instance.AddScore();
            DeactivateObject();
            AudioManager.instance.PlaySFX(_popSFX);
-           Destroy(other.gameObject);
+           other.gameObject.SetActive(false);
         }
     }
 

@@ -321,7 +321,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7251e81078bc51e4a9c7debbc1cf7740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ballons: {fileID: 6712486645651108101, guid: 50ef3deccd9808e4682edb72ed257c37, type: 3}
+  _balloonPrefab:
+  - {fileID: 6712486645651108101, guid: 50ef3deccd9808e4682edb72ed257c37, type: 3}
+  - {fileID: 6024170520884009239, guid: 2a00908c266116e4f918f5cc87cfc6bf, type: 3}
+  _ballonSpeedRate: 2
 --- !u!1001 &388825062
 PrefabInstance:
   m_ObjectHideFlags: 0

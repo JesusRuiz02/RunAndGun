@@ -123,3 +123,4 @@ MonoBehaviour:
   _speed: 0
   _newPosition: {x: 0, y: 0, z: 0}
   _player: {fileID: 0}
+  _Obstacle_Type: 1
