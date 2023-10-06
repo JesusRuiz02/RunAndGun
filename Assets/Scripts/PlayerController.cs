@@ -7,6 +7,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
+    private float _shots = default;
+    [SerializeField] private TextMeshProUGUI _textAccuracy;
+    [SerializeField] private TextMeshProUGUI _textScore;
     [SerializeField] private float _throwForce;
     [SerializeField] private float _throwUpForce;
     [SerializeField] private GameObject canvasGameOver;
@@ -72,15 +75,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void GameOver()
+    {
+        canvasGameOver.SetActive(true);
+        Debug.Log("Perdiste");
+        float accuracy = (score / _shots ) * 100;
+        double _accuracy = Math.Round(accuracy, 2);
+        _accuracy = score == 0 ? 0 : _accuracy; //Para que la division no de infinito en caso de ser cero
+        _textScore.text = "Score : " + score;
+        _textAccuracy.text = "Accuracy : " + _accuracy + "%";
+        Time.timeScale = 0;
+    }
+
     private void Health()
     {
         if (!_isInmune)
         {
             if (_health < 2)
             {
-                Time.timeScale = 0;
-                canvasGameOver.SetActive(true);
-                Debug.Log("Perdiste");
+               GameOver();
             }
             else
             {
@@ -92,6 +105,7 @@ public class PlayerController : MonoBehaviour
     
     public void Shoot(Vector3 Targetposition, GameObject projectile)
     {
+        _shots++;
         Vector3 forceDirection = transform.forward;
     
         forceDirection = (Targetposition - transform.position).normalized;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class UImanager : MonoBehaviour
 {
@@ -7,6 +8,12 @@ public class UImanager : MonoBehaviour
     [SerializeField] private RectTransform _rectTransform;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private bool _isPause = false;
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("TileMovemenent");
+        Time.timeScale = 1;
+    }
 
 
     public void PanelFadeIn()
