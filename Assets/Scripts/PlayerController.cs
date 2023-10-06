@@ -1,4 +1,8 @@
+using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _health = 3;
     [SerializeField] private AudioClip _popSfx = default;
     [SerializeField] private float score = default;
+    [SerializeField] private TextMeshProUGUI _scoreText = default;
+    [SerializeField] private GameObject _powerUP = default;
+   
     private bool _isInmune = default;
     private void Awake()
     {
@@ -21,16 +28,29 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _scoreText.text = score.ToString();
     }
+
+   
+
     public float Score => score;
 
     public void AddScore()
     {
         score++;
+        _scoreText.text = score.ToString();
         float mod = score % 10;
         if (mod == 0)
         {
             TilePool._Instance.BringObjectToFront(TilePool._Instance.PooledObjects,TilePool._Instance.PooledObjects.Count-1);
+        }
+
+        float modPowerUp = score % 20;
+
+        if (modPowerUp == 0)
+        {
+            SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.PowerUp);
         }
     }
 
@@ -40,6 +60,15 @@ public class PlayerController : MonoBehaviour
         {
             Health();
             AudioManager.instance.PlaySFX(_popSfx);
+            other.gameObject.SetActive(false);
+        }
+
+        if (other.CompareTag("PowerUp"))
+        {
+            StartCoroutine(PowerUp());
+           other.gameObject.SetActive(false);
+            //gameObject.
+            //sfx power up
         }
     }
 
@@ -72,7 +101,13 @@ public class PlayerController : MonoBehaviour
         // projectile.transform.LookAt(forceDirection);
     
         projectile.GetComponent<Rigidbody>().AddForce(forceToAdd, ForceMode.Impulse);
-    
+    }
 
+
+    IEnumerator PowerUp()
+    {
+        _isInmune = true;
+        yield return new WaitForSeconds(7.0f);
+        _isInmune = false;
     }
 }

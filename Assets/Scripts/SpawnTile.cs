@@ -30,7 +30,6 @@ public class SpawnTile : MonoBehaviour
         {
            // var newPosition = tiles.transform.Find("NextTilePos");
             tiles.transform.position = new Vector3(0, 0, 125f);
-            SpawnerBalloon.instance.CreateBalloons();
             tiles.SetActive(true);
         }
             

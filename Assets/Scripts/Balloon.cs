@@ -5,6 +5,7 @@ public class Balloon : MonoBehaviour
     [SerializeField] private float _speed = default;
     [SerializeField] private Vector3 _newPosition = default;
     [SerializeField] private Transform _player = default;
+    public OBSTACLE_TYPE _Obstacle_Type;
     void Start()
     {
         _player = Camera.main.transform;
@@ -16,6 +17,12 @@ public class Balloon : MonoBehaviour
         _newPosition = transform.position;
         _newPosition.y += Mathf.Sin(Time.time) * Time.deltaTime;
         transform.position = _newPosition;
-        transform.position = Vector3.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position , _player.position, _speed * Time.deltaTime);
+    }
+    
+    public enum OBSTACLE_TYPE
+    {
+        Balloon,
+        PowerUp
     }
 }
