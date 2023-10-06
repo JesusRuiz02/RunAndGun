@@ -72,11 +72,11 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("PowerUp"))
         {
-            StartCoroutine(PowerUp());
-           other.gameObject.SetActive(false);
-            //gameObject.
-            //sfx power up
+            CallCoroutine();
+            other.gameObject.SetActive(false);
         }
+
+        
     }
 
     private void GameOver()
@@ -121,8 +121,13 @@ public class PlayerController : MonoBehaviour
         projectile.GetComponent<Rigidbody>().AddForce(forceToAdd, ForceMode.Impulse);
     }
 
+    public void CallCoroutine()
+    {
+        StartCoroutine(PowerUp());
+    }
 
-    IEnumerator PowerUp()
+
+    public IEnumerator PowerUp()
     {
         _isInmune = true;
         yield return new WaitForSeconds(7.0f);

@@ -14,6 +14,14 @@ public class Bullet : MonoBehaviour
            AudioManager.instance.PlaySFX(_popSFX);
            other.gameObject.SetActive(false);
         }
+        
+        if (other.CompareTag("PowerUp"))
+        {
+            PlayerController.instance.CallCoroutine();
+            other.gameObject.SetActive(false);
+            //gameObject.
+            //sfx power up
+        }
     }
 
     private void OnEnable()
