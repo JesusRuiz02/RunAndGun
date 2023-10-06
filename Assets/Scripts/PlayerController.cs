@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         // projectile.transform.LookAt(forceDirection);
     
         projectile.GetComponent<Rigidbody>().AddForce(forceToAdd, ForceMode.Impulse);
-    
+    }
 
 
     IEnumerator PowerUp()
