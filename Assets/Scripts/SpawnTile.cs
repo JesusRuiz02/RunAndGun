@@ -6,9 +6,8 @@ public class SpawnTile : MonoBehaviour
     private TilePool _tilePool;
 
     [SerializeField] private Transform _tilePosition = default;
-    
-    
-    
+    [SerializeField] private Vector3 _SpawnPosition;
+
     void Start()
     {
         _tilePool = TilePool._Instance;
@@ -24,12 +23,12 @@ public class SpawnTile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-        GameObject tiles = TilePool._Instance.GetPooledObject();
+            GameObject tiles = TilePool._Instance.GetPooledObject();
 
         if (tiles != null)
         {
            // var newPosition = tiles.transform.Find("NextTilePos");
-            tiles.transform.position = new Vector3(0, 0, 125f);
+            tiles.transform.position = _SpawnPosition;
             tiles.SetActive(true);
         }
             

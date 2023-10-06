@@ -61,7 +61,7 @@ public class SpawnerBalloon : MonoBehaviour
             if (_balloonPrefab[i].GetComponent<Balloon>()._Obstacle_Type == _type)
             {
                 GameObject currentBullet = Instantiate(_balloonPrefab[i],
-                    new Vector3(Random.Range(-20, 20), Random.Range(20, 5), 125), Quaternion.identity);
+                    new Vector3(Random.Range(-20, 20), Random.Range(20, 5), 125), Quaternion.Euler(-90,0,0));
                 pooledObjects.Add(currentBullet);
                 return currentBullet;
             }

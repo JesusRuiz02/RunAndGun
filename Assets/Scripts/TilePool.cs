@@ -36,7 +36,7 @@ public class TilePool : MonoBehaviour
 
     void Start()
     {
-        GameObject bridge = Instantiate(_bridgePrefab, gameObject.transform.position, gameObject.transform.rotation);
+        GameObject bridge = Instantiate(_bridgePrefab, new Vector3(0,0,80), Quaternion.Euler(0,180,0));
         _pooledObjects.Add(bridge);
         for (int i = 0; i < _amountToPool; i++)
         {

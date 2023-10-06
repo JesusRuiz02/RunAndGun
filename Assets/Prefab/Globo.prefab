@@ -88,8 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459f2bd2e4d3b56419a9fc6c12c5cd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 8
+  _speed: 12
+  _newPosition: {x: 0, y: 0, z: 0}
   _player: {fileID: 0}
+  _Obstacle_Type: 0
 --- !u!64 &5959214201726521354
 MeshCollider:
   m_ObjectHideFlags: 0

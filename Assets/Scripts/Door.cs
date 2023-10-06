@@ -12,6 +12,7 @@ public class Door : MonoBehaviour
     {
         _animatorParent = gameObject.transform.GetComponentInParent<Animator>();
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,7 +24,7 @@ public class Door : MonoBehaviour
 
     private void OnEnable()
     {
-        _animatorParent.Play("Idle");
+        _animatorParent.Play("Regresar");
     }
 
     private void OnDisable()
