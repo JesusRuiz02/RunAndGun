@@ -48,7 +48,7 @@ public class TouchManager : MonoBehaviour
   private void CheckMag(Vector3 Targetposition)
   {
     GameObject projectile = ObjectPool.instance.GetPooledObject();
-
+    
     if (projectile != null)
     {
       projectile.transform.position = _player.transform.position;

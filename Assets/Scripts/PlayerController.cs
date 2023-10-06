@@ -77,13 +77,14 @@ public class PlayerController : MonoBehaviour
 
     private void GameOver()
     {
-        Time.timeScale = 0;
         canvasGameOver.SetActive(true);
         Debug.Log("Perdiste");
-        float accuracy = (_shots / score) * 10;
-         double _accuracy = Math.Round(accuracy, 2);
+        float accuracy = (score / _shots ) * 100;
+        double _accuracy = Math.Round(accuracy, 2);
+        _accuracy = score == 0 ? 0 : _accuracy; //Para que la division no de infinito en caso de ser cero
         _textScore.text = "Score : " + score;
         _textAccuracy.text = "Accuracy : " + _accuracy + "%";
+        Time.timeScale = 0;
     }
 
     private void Health()
