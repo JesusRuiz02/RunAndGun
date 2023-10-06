@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
     private float _shots = default;
+    [SerializeField] private AudioClip _song = default;
     [SerializeField] private TextMeshProUGUI _textAccuracy;
     [SerializeField] private TextMeshProUGUI _textScore;
     [SerializeField] private float _throwForce;
@@ -35,7 +36,10 @@ public class PlayerController : MonoBehaviour
         _scoreText.text = score.ToString();
     }
 
-   
+    private void Start()
+    {
+        AudioManager.instance.PlayMusic(_song);
+    }
 
     public float Score => score;
 

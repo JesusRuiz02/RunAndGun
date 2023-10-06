@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae52ddaead28164abb4b363215f5ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _song: {fileID: 8300000, guid: 0a6fa8d7e8987924fb71abe48f2f3cfc, type: 3}
   _textAccuracy: {fileID: 170272391}
   _textScore: {fileID: 1561357144}
   _throwForce: 30
@@ -1386,7 +1387,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
