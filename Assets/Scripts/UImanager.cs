@@ -11,7 +11,9 @@ public class UImanager : MonoBehaviour
 
     public void RestartGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("TileMovemenent");
+        
     }
 
 
