@@ -10,6 +10,7 @@ TagManager:
   - Scenary
   - End
   - Spawn
+  - PowerUp
   layers:
   - Default
   - TransparentFX

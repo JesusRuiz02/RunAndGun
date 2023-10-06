@@ -16,6 +16,6 @@ public class Balloon : MonoBehaviour
         _newPosition = transform.position;
         _newPosition.y += Mathf.Sin(Time.time) * Time.deltaTime;
         transform.position = _newPosition;
-        transform.position = Vector3.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position , _player.position, _speed * Time.deltaTime);
     }
 }
