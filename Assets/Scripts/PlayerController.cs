@@ -43,22 +43,37 @@ public class PlayerController : MonoBehaviour
 
     public float Score => score;
 
-    public void AddScore()
+    public void AddScore(float scoreToAdd)
     {
-        score++;
+        score += scoreToAdd;
         _scoreText.text = score.ToString();
-        float mod = score % 10;
-        if (mod == 0)
+        SpawnObstacleNPowerUps();
+    }
+
+    private void SpawnObstacleNPowerUps()
+    {
+        bool isScoreMultiple = GetMod(20);
+        if (isScoreMultiple)
         {
             TilePool._Instance.BringObjectToFront(TilePool._Instance.PooledObjects,TilePool._Instance.PooledObjects.Count-1);
         }
-
-        float modPowerUp = score % 20;
-
-        if (modPowerUp == 0)
+        isScoreMultiple = GetMod(15);
+        if (isScoreMultiple)
         {
             SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.PowerUp);
         }
+        isScoreMultiple = GetMod(17);
+        if (isScoreMultiple)
+        {
+            SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.BalloonSpawner);
+        }
+    }
+
+    private bool GetMod(float dividedMod)
+    {
+        float mod = score % dividedMod;
+        bool isModZero = mod == 0 ? true : false;
+        return isModZero;
     }
 
     private void OnTriggerEnter(Collider other)

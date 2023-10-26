@@ -68,17 +68,7 @@ public class SpawnerBalloon : MonoBehaviour
         }
         return null;
     }
-
-  
     
-
-   /* public GameObject CreateBalloons(Balloon.OBSTACLE_TYPE _type)
-    {
-        GameObject obj = Instantiate(_balloonPrefab);
-        pooledObjects.Add(obj);
-        obj.SetActive(false);
-        return obj;
-    }*/
     
    
 }
