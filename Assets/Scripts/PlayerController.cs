@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameObject _crashParticle;
     private bool heavyBalloonsUnlocked;
     public static PlayerController instance;
     private float _shots = default;
@@ -102,17 +103,29 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
+        if (other.CompareTag("Wall"))
+        {
+            other.gameObject.SetActive(false);
+           GameObject particle = Instantiate(_crashParticle, other.transform.position, other.transform.rotation);
+            Destroy(particle, 1f);
+            GameOver();
+        }
+
         
     }
 
     private void GameOver()
     {
         canvasGameOver.SetActive(true);
-        Debug.Log("Perdiste");
+        float highScore = PlayerPrefs.GetFloat("highscore", score);
         float accuracy = (score / _shots ) * 100;
         double _accuracy = Math.Round(accuracy, 2);
         _accuracy = score == 0 ? 0 : _accuracy; //Para que la division no de infinito en caso de ser cero
-        _textScore.text = "Score : " + score;
+        if (highScore < score)
+        {
+            PlayerPrefs.SetFloat("highScore", score);
+        }
+        _textScore.text = "Highscore : " + highScore;
         _textAccuracy.text = "Accuracy : " + _accuracy + "%";
         Time.timeScale = 0;
     }
