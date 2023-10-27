@@ -7,6 +7,7 @@ public class Balloon : MonoBehaviour
     [SerializeField] private float _speed = default;
     [SerializeField] private Vector3 _newPosition = default;
     [SerializeField] private Transform _player = default;
+    [SerializeField] private GameObject _particleExplosion;
     [SerializeField] private List<Transform> BalloonExplosionTransform;
     public OBSTACLE_TYPE _Obstacle_Type;
     void Start()
@@ -17,16 +18,18 @@ public class Balloon : MonoBehaviour
 
     private void Update()
     {
-        if (_Obstacle_Type == OBSTACLE_TYPE.BalloonSpawner)
-        {
-            _newPosition = transform.position;
-            _newPosition.z += Mathf.Sin(2 * Time.time) * Time.deltaTime;
-        }
         _newPosition = transform.position;
         _newPosition.y += Mathf.Sin(Time.time) * Time.deltaTime;
         transform.position = _newPosition;
         transform.position = Vector3.MoveTowards(transform.position , _player.position, _speed * Time.deltaTime);
     }
+
+    public void CreateParticula()
+    {
+       GameObject particle = Instantiate(_particleExplosion, transform.position, Quaternion.identity);
+        Destroy(particle, 0.5f);
+    }
+    
 
     public void BalloonExplosion()
     {

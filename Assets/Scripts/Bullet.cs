@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
             PlayerController.instance.AddScore(1);
            DeactivateObject();
            AudioManager.instance.PlaySFX(_popSFX);
+           other.GetComponent<Balloon>().CreateParticula();
            other.gameObject.SetActive(false);
         }
         

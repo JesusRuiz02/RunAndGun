@@ -57,7 +57,6 @@ public class TilePool : MonoBehaviour
                 return _pooledObjects[i];
             }
         }
-
         return null;
     }
     

@@ -363,6 +363,7 @@ MonoBehaviour:
   _speed: 12
   _newPosition: {x: 0, y: 0, z: 0}
   _player: {fileID: 0}
+  _particleExplosion: {fileID: 8226479634739061045, guid: a8d797e85c363844ba0f8c15c6df87b0, type: 3}
   BalloonExplosionTransform:
   - {fileID: 2000721905207807057}
   - {fileID: 9141677124615174887}
