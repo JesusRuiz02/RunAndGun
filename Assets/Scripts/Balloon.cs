@@ -4,6 +4,8 @@ using DG.Tweening;
 
 public class Balloon : MonoBehaviour
 {
+    private int BalloonLife = 5;
+    private Renderer _renderer;
     [SerializeField] private float _speed = default;
     [SerializeField] private Vector3 _newPosition = default;
     [SerializeField] private Transform _player = default;
@@ -12,6 +14,7 @@ public class Balloon : MonoBehaviour
     public OBSTACLE_TYPE _Obstacle_Type;
     void Start()
     {
+        _renderer = GetComponent<Renderer>();
         _player = Camera.main.transform;
         _speed += PlayerController.instance.Score / 5 ;
     }
@@ -41,11 +44,43 @@ public class Balloon : MonoBehaviour
            balloon.transform.DOMove(BalloonExplosionTransform[random].position, 0.4f).SetEase(Ease.Flash);
         }
     }
+
+    public void BreakHeavyBalloon()
+    {
+        switch (BalloonLife)
+        {
+            case 5:
+                _renderer.material.color = new Color(148, 79, 57);
+                BalloonLife--;
+                break;
+            case 4:
+                _renderer.material.color = Color.green;
+                BalloonLife--;
+                break;
+            case 3:
+                _renderer.material.color = Color.yellow;
+                BalloonLife--;
+                break;
+            case 2:
+                _renderer.material.color = Color.red;
+                BalloonLife--;
+                break;
+            case 1:
+                _renderer.material.color = new Color(25, 25, 25);
+                gameObject.SetActive(false);
+                PlayerController.instance.AddScore(3);
+                BalloonLife = 5;
+                break;
+        }
+    }
+    
+    
     
     public enum OBSTACLE_TYPE
     {
         Balloon,
         PowerUp,
-        BalloonSpawner
+        BalloonSpawner,
+        HeavyBalloon
     }
 }
