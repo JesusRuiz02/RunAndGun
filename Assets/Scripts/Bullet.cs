@@ -11,14 +11,22 @@ public class Bullet : MonoBehaviour
         {
             if (other.GetComponent<Balloon>()._Obstacle_Type == Balloon.OBSTACLE_TYPE.BalloonSpawner)
             {
-                PlayerController.instance.AddScore(1);
+                PlayerController.instance.AddScore(2);
                 other.GetComponent<Balloon>().BalloonExplosion();
+                other.gameObject.SetActive(false);
             }
-            PlayerController.instance.AddScore(1);
-           DeactivateObject();
+            else if (other.GetComponent<Balloon>()._Obstacle_Type == Balloon.OBSTACLE_TYPE.Balloon )
+            {
+                PlayerController.instance.AddScore(1);
+                other.gameObject.SetActive(false);
+            }
+            else if (other.GetComponent<Balloon>()._Obstacle_Type == Balloon.OBSTACLE_TYPE.HeavyBalloon )
+            {
+                other.GetComponent<Balloon>().BreakHeavyBalloon();
+            }
+            DeactivateObject();
            AudioManager.instance.PlaySFX(_popSFX);
            other.GetComponent<Balloon>().CreateParticula();
-           other.gameObject.SetActive(false);
         }
         
         if (other.CompareTag("PowerUp"))

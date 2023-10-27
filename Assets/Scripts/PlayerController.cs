@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool heavyBalloonsUnlocked;
     public static PlayerController instance;
     private float _shots = default;
     [SerializeField] private AudioClip _song = default;
@@ -47,26 +48,36 @@ public class PlayerController : MonoBehaviour
     {
         score += scoreToAdd;
         _scoreText.text = score.ToString();
+        if (score <= 100)
+        {
+            heavyBalloonsUnlocked = true;
+        }
         SpawnObstacleNPowerUps();
     }
 
     private void SpawnObstacleNPowerUps()
     {
-        bool isScoreMultiple = GetMod(20);
-        if (isScoreMultiple)
+        bool isScoreMultipleOf = GetMod(20);
+        if (isScoreMultipleOf)
         {
             TilePool._Instance.BringObjectToFront(TilePool._Instance.PooledObjects,TilePool._Instance.PooledObjects.Count-1);
         }
-        isScoreMultiple = GetMod(15);
-        if (isScoreMultiple)
+        isScoreMultipleOf = GetMod(30);
+        if (isScoreMultipleOf)
         {
             SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.PowerUp);
         }
-        isScoreMultiple = GetMod(7);
-        if (isScoreMultiple)
+        isScoreMultipleOf = GetMod(7);
+        if (isScoreMultipleOf)
         {
             SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.BalloonSpawner);
         }
+        isScoreMultipleOf = GetMod(16);
+        if (isScoreMultipleOf && heavyBalloonsUnlocked)
+        {
+            SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.HeavyBalloon);
+        }
+
     }
 
     private bool GetMod(float dividedMod)
