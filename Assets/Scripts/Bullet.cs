@@ -9,7 +9,12 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Balloon"))
         {
-           PlayerController.instance.AddScore();
+            if (other.GetComponent<Balloon>()._Obstacle_Type == Balloon.OBSTACLE_TYPE.BalloonSpawner)
+            {
+                PlayerController.instance.AddScore(1);
+                other.GetComponent<Balloon>().BalloonExplosion();
+            }
+            PlayerController.instance.AddScore(1);
            DeactivateObject();
            AudioManager.instance.PlaySFX(_popSFX);
            other.gameObject.SetActive(false);

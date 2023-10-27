@@ -11,7 +11,7 @@ public class SpawnerBalloon : MonoBehaviour
     [SerializeField] private GameObject[] _balloonPrefab;
     [SerializeField] private float _ballonSpeedRate = default;
 
-    private int amounToPool = 3;
+    private int amounToPool = 2;
 
     private void Awake()
     {
@@ -37,7 +37,7 @@ public class SpawnerBalloon : MonoBehaviour
         if (_ballonSpeedRate <= 0 )
         {
             GetPooledObject(Balloon.OBSTACLE_TYPE.Balloon);
-            _ballonSpeedRate = 3;
+            _ballonSpeedRate = 2;
         }
     }
 
@@ -68,17 +68,7 @@ public class SpawnerBalloon : MonoBehaviour
         }
         return null;
     }
-
-  
     
-
-   /* public GameObject CreateBalloons(Balloon.OBSTACLE_TYPE _type)
-    {
-        GameObject obj = Instantiate(_balloonPrefab);
-        pooledObjects.Add(obj);
-        obj.SetActive(false);
-        return obj;
-    }*/
     
    
 }
