@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.PowerUp);
         }
-        isScoreMultiple = GetMod(17);
+        isScoreMultiple = GetMod(7);
         if (isScoreMultiple)
         {
             SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.BalloonSpawner);

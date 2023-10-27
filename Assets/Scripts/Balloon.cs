@@ -20,7 +20,7 @@ public class Balloon : MonoBehaviour
         if (_Obstacle_Type == OBSTACLE_TYPE.BalloonSpawner)
         {
             _newPosition = transform.position;
-            _newPosition.x += Mathf.Sin(2 * Time.time) * Time.deltaTime;
+            _newPosition.z += Mathf.Sin(2 * Time.time) * Time.deltaTime;
         }
         _newPosition = transform.position;
         _newPosition.y += Mathf.Sin(Time.time) * Time.deltaTime;
@@ -33,6 +33,7 @@ public class Balloon : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
            GameObject balloon = SpawnerBalloon.instance.GetPooledObject(OBSTACLE_TYPE.Balloon);
+           balloon.transform.position = transform.position;
            int random = Random.Range(0, 7);
            balloon.transform.DOMove(BalloonExplosionTransform[random].position, 0.4f).SetEase(Ease.Flash);
         }
