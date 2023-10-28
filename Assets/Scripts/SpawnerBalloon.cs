@@ -36,12 +36,12 @@ public class SpawnerBalloon : MonoBehaviour
         _ballonSpeedRate -= Time.deltaTime;
         if (_ballonSpeedRate <= 0 )
         {
-            GetPooledObject(Balloon.OBSTACLE_TYPE.Balloon);
+            GetPooledObject(OBSTACLE_TYPE.Balloon);
             _ballonSpeedRate = 2;
         }
     }
 
-    public GameObject GetPooledObject(Balloon.OBSTACLE_TYPE _type)
+    public GameObject GetPooledObject(OBSTACLE_TYPE _type)
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {

@@ -116,6 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 111906963206051961}
+  - component: {fileID: -5988338535566989004}
   m_Layer: 0
   m_Name: ExtraLife
   m_TagString: Untagged
@@ -139,3 +140,21 @@ Transform:
   - {fileID: 1536586600979150720}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5988338535566989004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781563148955280833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459f2bd2e4d3b56419a9fc6c12c5cd3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 12
+  _newPosition: {x: 0, y: 0, z: 0}
+  _player: {fileID: 0}
+  _particleExplosion: {fileID: 8226479634739061045, guid: a8d797e85c363844ba0f8c15c6df87b0, type: 3}
+  BalloonExplosionTransform: []
+  _Obstacle_Type: 4
