@@ -16,11 +16,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _throwForce;
     [SerializeField] private float _throwUpForce;
     [SerializeField] private GameObject canvasGameOver;
-    [SerializeField] private float _health = 3;
+  //  [SerializeField] private float _health = 3;
+ //   [SerializeField] private float _MaxHealth = 3;
     [SerializeField] private AudioClip _popSfx = default;
     [SerializeField] private float score = default;
     [SerializeField] private TextMeshProUGUI _scoreText = default;
     [SerializeField] private GameObject _powerUP = default;
+    private HealthController _healthController = default;
    
     private bool _isInmune = default;
     private void Awake()
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         AudioManager.instance.PlayMusic(_song);
+        _healthController = gameObject.GetComponent<HealthController>();
     }
 
     public float Score => score;
@@ -92,6 +95,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Balloon"))
         {
+            _healthController.ReduceHealth();
             Health();
             AudioManager.instance.PlaySFX(_popSfx);
             other.gameObject.SetActive(false);
@@ -112,9 +116,11 @@ public class PlayerController : MonoBehaviour
         }
 
         
+
+        
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         canvasGameOver.SetActive(true);
         float highScore = PlayerPrefs.GetFloat("highscore", score);
@@ -130,19 +136,11 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    private void Health()
+    public void Health()
     {
         if (!_isInmune)
         {
-            if (_health < 2)
-            {
-               GameOver();
-            }
-            else
-            {
-                _health--;
-            }
-            
+            _healthController.UpdateHealth();
         }
     }
     
@@ -163,6 +161,16 @@ public class PlayerController : MonoBehaviour
     public void CallCoroutine()
     {
         StartCoroutine(PowerUp());
+    }
+
+    public void callHealPW()
+    {
+        _healthController.Heal();
+    }
+
+    public void callExtraLife()
+    {
+        _healthController.AddExtraLife();
     }
 
 

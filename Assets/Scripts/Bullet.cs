@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -5,6 +6,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float secondsToDeactivate;
     private Rigidbody _rigidbody;
     [SerializeField] private AudioClip _popSFX = default;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Balloon"))
@@ -27,6 +29,18 @@ public class Bullet : MonoBehaviour
             DeactivateObject();
            AudioManager.instance.PlaySFX(_popSFX);
            other.GetComponent<Balloon>().CreateParticula();
+        }
+
+        if (other.CompareTag("Heal"))
+        {
+           PlayerController.instance.callHealPW();
+            other.gameObject.SetActive(false);
+        }
+
+        if (other.CompareTag("ExtraLife"))
+        {
+            PlayerController.instance.callExtraLife();
+            other.gameObject.SetActive(false);
         }
         
         if (other.CompareTag("PowerUp"))

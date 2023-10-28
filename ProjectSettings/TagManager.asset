@@ -11,6 +11,8 @@ TagManager:
   - End
   - Spawn
   - PowerUp
+  - Heal
+  - ExtraLife
   - Wall
   layers:
   - Default
