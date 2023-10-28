@@ -13,6 +13,7 @@ TagManager:
   - PowerUp
   - Heal
   - ExtraLife
+  - Wall
   layers:
   - Default
   - TransparentFX
