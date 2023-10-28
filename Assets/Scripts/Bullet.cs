@@ -11,18 +11,18 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Balloon"))
         {
-            if (other.GetComponent<Balloon>()._Obstacle_Type == Balloon.OBSTACLE_TYPE.BalloonSpawner)
+            if (other.GetComponent<Balloon>()._Obstacle_Type == OBSTACLE_TYPE.BalloonSpawner)
             {
                 PlayerController.instance.AddScore(2);
                 other.GetComponent<Balloon>().BalloonExplosion();
                 other.gameObject.SetActive(false);
             }
-            else if (other.GetComponent<Balloon>()._Obstacle_Type == Balloon.OBSTACLE_TYPE.Balloon )
+            else if (other.GetComponent<Balloon>()._Obstacle_Type == OBSTACLE_TYPE.Balloon )
             {
                 PlayerController.instance.AddScore(1);
                 other.gameObject.SetActive(false);
             }
-            else if (other.GetComponent<Balloon>()._Obstacle_Type == Balloon.OBSTACLE_TYPE.HeavyBalloon )
+            else if (other.GetComponent<Balloon>()._Obstacle_Type == OBSTACLE_TYPE.HeavyBalloon )
             {
                 other.GetComponent<Balloon>().BreakHeavyBalloon();
             }

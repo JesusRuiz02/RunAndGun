@@ -76,11 +76,14 @@ public class Balloon : MonoBehaviour
     
     
     
-    public enum OBSTACLE_TYPE
-    {
-        Balloon,
-        PowerUp,
-        BalloonSpawner,
-        HeavyBalloon
-    }
+   
+}
+public enum OBSTACLE_TYPE
+{
+    Balloon,
+    PowerUp,
+    BalloonSpawner,
+    HeavyBalloon,
+    ExtraLifePowerUp,
+    HealPowerUp,
 }

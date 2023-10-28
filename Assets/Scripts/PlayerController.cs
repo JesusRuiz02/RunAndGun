@@ -1,29 +1,28 @@
 using System;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class PlayerController : MonoBehaviour
 {
+    public bool heavyBalloonsUnlocked;
     [SerializeField] private GameObject _crashParticle;
-    private bool heavyBalloonsUnlocked;
     public static PlayerController instance;
     private float _shots = default;
+    [SerializeField] private Balloon _balloon;
     [SerializeField] private AudioClip _song = default;
     [SerializeField] private TextMeshProUGUI _textAccuracy;
     [SerializeField] private TextMeshProUGUI _textScore;
     [SerializeField] private float _throwForce;
     [SerializeField] private float _throwUpForce;
     [SerializeField] private GameObject canvasGameOver;
-  //  [SerializeField] private float _health = 3;
- //   [SerializeField] private float _MaxHealth = 3;
     [SerializeField] private AudioClip _popSfx = default;
     [SerializeField] private float score = default;
     [SerializeField] private TextMeshProUGUI _scoreText = default;
-    [SerializeField] private GameObject _powerUP = default;
     private HealthController _healthController = default;
-   
+    public float Score => score;
     private bool _isInmune = default;
     private void Awake()
     {
@@ -42,54 +41,26 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         AudioManager.instance.PlayMusic(_song);
         _healthController = gameObject.GetComponent<HealthController>();
     }
-
-    public float Score => score;
+    
 
     public void AddScore(float scoreToAdd)
     {
         score += scoreToAdd;
         _scoreText.text = score.ToString();
-        if (score <= 100)
+        if (score >= 50)
         {
-            heavyBalloonsUnlocked = true;
+            GameManager.instance.SpawnObstacleNPowerUps(16f,OBSTACLE_TYPE.HeavyBalloon);
         }
-        SpawnObstacleNPowerUps();
+        GameManager.instance.SpawnObstacleNPowerUps(9f,OBSTACLE_TYPE.BalloonSpawner);
+        GameManager.instance.SpawnObstacleNPowerUps(30f,OBSTACLE_TYPE.PowerUp);
+        GameManager.instance.SpawnObstacleNPowerUps(40f, OBSTACLE_TYPE.HealPowerUp);
+        GameManager.instance.SpawnObstacleNPowerUps(36f, OBSTACLE_TYPE.ExtraLifePowerUp);
     }
-
-    private void SpawnObstacleNPowerUps()
-    {
-        bool isScoreMultipleOf = GetMod(20);
-        if (isScoreMultipleOf)
-        {
-            TilePool._Instance.BringObjectToFront(TilePool._Instance.PooledObjects,TilePool._Instance.PooledObjects.Count-1);
-        }
-        isScoreMultipleOf = GetMod(30);
-        if (isScoreMultipleOf)
-        {
-            SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.PowerUp);
-        }
-        isScoreMultipleOf = GetMod(7);
-        if (isScoreMultipleOf)
-        {
-            SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.BalloonSpawner);
-        }
-        isScoreMultipleOf = GetMod(16);
-        if (isScoreMultipleOf && heavyBalloonsUnlocked)
-        {
-            SpawnerBalloon.instance.GetPooledObject(Balloon.OBSTACLE_TYPE.HeavyBalloon);
-        }
-
-    }
-
-    private bool GetMod(float dividedMod)
-    {
-        float mod = score % dividedMod;
-        bool isModZero = mod == 0 ? true : false;
-        return isModZero;
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -114,9 +85,6 @@ public class PlayerController : MonoBehaviour
             Destroy(particle, 1f);
             GameOver();
         }
-
-        
-
         
     }
 
