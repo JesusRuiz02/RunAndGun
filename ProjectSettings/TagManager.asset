@@ -11,6 +11,7 @@ TagManager:
   - End
   - Spawn
   - PowerUp
+  - Wall
   layers:
   - Default
   - TransparentFX

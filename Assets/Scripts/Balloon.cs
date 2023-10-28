@@ -50,7 +50,7 @@ public class Balloon : MonoBehaviour
         switch (BalloonLife)
         {
             case 5:
-                _renderer.material.color = new Color(148, 79, 57);
+                _renderer.material.color = Color.black;
                 BalloonLife--;
                 break;
             case 4:
