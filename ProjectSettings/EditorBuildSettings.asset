@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TileMovemenent.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
+  - enabled: 1
+    path: Assets/Scenes/PlayScene.unity
+    guid: c8c201a7107d2124892e18a3aed35b45
   m_configObjects: {}
