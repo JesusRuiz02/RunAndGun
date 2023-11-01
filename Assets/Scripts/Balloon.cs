@@ -51,22 +51,32 @@ public class Balloon : MonoBehaviour
         {
             case 5:
                 _renderer.material.color = Color.black;
+                gameObject.transform
+                    .DOMove(new Vector3(transform.position.x, transform.position.y + -0.2f, transform.position.z), 0.5f).SetEase(Ease.Flash);
                 BalloonLife--;
                 break;
             case 4:
                 _renderer.material.color = Color.green;
+                gameObject.transform
+                    .DOMove(new Vector3(transform.position.x, transform.position.y + -0.2f, transform.position.z), 0.5f).SetEase(Ease.Flash);
                 BalloonLife--;
                 break;
             case 3:
                 _renderer.material.color = Color.yellow;
+                gameObject.transform
+                    .DOMove(new Vector3(transform.position.x, transform.position.y + -0.2f, transform.position.z), 0.5f).SetEase(Ease.Flash);
                 BalloonLife--;
                 break;
             case 2:
                 _renderer.material.color = Color.red;
+                gameObject.transform
+                    .DOMove(new Vector3(transform.position.x, transform.position.y + -0.2f, transform.position.z), 0.5f).SetEase(Ease.Flash);
                 BalloonLife--;
                 break;
             case 1:
                 _renderer.material.color = new Color(25, 25, 25);
+                gameObject.transform
+                    .DOMove(new Vector3(transform.position.x, transform.position.y + -0.2f, transform.position.z), 0.5f).SetEase(Ease.Flash);
                 gameObject.SetActive(false);
                 PlayerController.instance.AddScore(3);
                 BalloonLife = 5;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using TMPro;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -70,6 +71,7 @@ public class PlayerController : MonoBehaviour
             Health();
             AudioManager.instance.PlaySFX(_popSfx);
             other.gameObject.SetActive(false);
+            Camera.main.DOShakePosition(0.25f, new Vector3(0, 2, 0), 80, 90f, true);
         }
 
         if (other.CompareTag("PowerUp"))
