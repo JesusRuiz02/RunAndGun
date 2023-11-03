@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.instance.SpawnObstacleNPowerUps(16f,OBSTACLE_TYPE.HeavyBalloon);
         }
-        if (score >= 0)
+        if (score >= 80)
         {
             GameManager.instance.SpawnObstacleNPowerUps(13f,OBSTACLE_TYPE.BalloonMobile);
         }

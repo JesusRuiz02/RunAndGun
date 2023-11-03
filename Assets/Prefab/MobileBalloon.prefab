@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459f2bd2e4d3b56419a9fc6c12c5cd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 15
   _newPosition: {x: 0, y: 0, z: 0}
   _player: {fileID: 0}
   _particleExplosion: {fileID: 8226479634739061045, guid: a8d797e85c363844ba0f8c15c6df87b0, type: 3}

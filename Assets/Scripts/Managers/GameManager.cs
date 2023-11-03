@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     
     public void SpawnObstacleNPowerUps(float rateSpawn, OBSTACLE_TYPE gameObjectToInstantiate)
     { 
-        float mod = PlayerController.instance.Score % 20;
+        float mod = PlayerController.instance.Score % 25;
         bool isScoreMultipleOf = mod == 0;
         if (isScoreMultipleOf)
         {
