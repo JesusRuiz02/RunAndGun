@@ -8,11 +8,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool heavyBalloonsUnlocked;
     [SerializeField] private GameObject _crashParticle;
     public static PlayerController instance;
+    [SerializeField] private AudioClip BulletSfx;
     private float _shots = default;
-    [SerializeField] private Balloon _balloon;
     [SerializeField] private AudioClip _song = default;
     [SerializeField] private TextMeshProUGUI _textAccuracy;
     [SerializeField] private TextMeshProUGUI _textScore;
@@ -30,7 +29,6 @@ public class PlayerController : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -55,6 +53,10 @@ public class PlayerController : MonoBehaviour
         if (score >= 50)
         {
             GameManager.instance.SpawnObstacleNPowerUps(16f,OBSTACLE_TYPE.HeavyBalloon);
+        }
+        if (score >= 0)
+        {
+            GameManager.instance.SpawnObstacleNPowerUps(13f,OBSTACLE_TYPE.BalloonMobile);
         }
         GameManager.instance.SpawnObstacleNPowerUps(9f,OBSTACLE_TYPE.BalloonSpawner);
         GameManager.instance.SpawnObstacleNPowerUps(30f,OBSTACLE_TYPE.PowerUp);
@@ -122,10 +124,10 @@ public class PlayerController : MonoBehaviour
         forceDirection = (Targetposition - transform.position).normalized;
 
         Vector3 forceToAdd = forceDirection * _throwForce + transform.up * _throwUpForce;
-    
-        // projectile.transform.LookAt(forceDirection);
-    
+
         projectile.GetComponent<Rigidbody>().AddForce(forceToAdd, ForceMode.Impulse);
+        
+        AudioManager.instance.PlaySFX(BulletSfx);
     }
 
     public void CallCoroutine()

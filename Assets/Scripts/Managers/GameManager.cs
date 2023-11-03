@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -22,13 +21,13 @@ public class GameManager : MonoBehaviour
     public void SpawnObstacleNPowerUps(float rateSpawn, OBSTACLE_TYPE gameObjectToInstantiate)
     { 
         float mod = PlayerController.instance.Score % 20;
-        bool isScoreMultipleOf = mod == 0 ? true : false;
+        bool isScoreMultipleOf = mod == 0;
         if (isScoreMultipleOf)
         {
-            TilePool._Instance.BringObjectToFront(TilePool._Instance.PooledObjects,TilePool._Instance.PooledObjects.Count-1);
+            TilePool._Instance.ChangeNextTypeTileToPool(TileType.BridgeTile);
         }
         mod = PlayerController.instance.Score % rateSpawn;
-        isScoreMultipleOf = mod == 0 ? true : false;
+        isScoreMultipleOf = mod == 0;
         if (isScoreMultipleOf)
         {
             SpawnerBalloon.instance.GetPooledObject(gameObjectToInstantiate);

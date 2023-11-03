@@ -14,6 +14,8 @@ TagManager:
   - Heal
   - ExtraLife
   - Wall
+  - SFX
+  - Music
   layers:
   - Default
   - TransparentFX

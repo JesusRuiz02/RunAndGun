@@ -27,8 +27,5 @@ public class Door : MonoBehaviour
         _animatorParent.Play("Regresar");
     }
 
-    private void OnDisable()
-    {
-        TilePool._Instance.GetObjectBack(TilePool._Instance.PooledObjects, 0);
-    }
+   
 }
