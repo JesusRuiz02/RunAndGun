@@ -10,7 +10,7 @@ public class AddSFX : MonoBehaviour
     {
         if (other.CompareTag("Wall"))
         {
-           GameObject particle = Instantiate(_particle, transform.position + new Vector3(0,0, 3f), Quaternion.identity);
+           GameObject particle = Instantiate(_particle, new Vector3(transform.position.x , transform.position.y, other.transform.position.z + 2f), Quaternion.identity);
            Destroy(particle, 2f);
         }
     }
