@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -17,6 +18,13 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Start()
+    {
+        musicSource.ignoreListenerPause = true;
+        SfxSource.ignoreListenerPause = true;
+    }
+
     public void PlaySFX(AudioClip clip)
     {
         SfxSource.PlayOneShot(clip);

@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class TouchManager : MonoBehaviour
 {
-  private float _flightDurationInSeconds = 3;
   [SerializeField] private GameObject _player;
   [SerializeField] private GameObject _bullets;
   private PlayerInput _playerInput;

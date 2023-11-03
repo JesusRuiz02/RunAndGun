@@ -21,8 +21,16 @@ public class Balloon : MonoBehaviour
 
     private void Update()
     {
-        _newPosition = transform.position;
-        _newPosition.y += Mathf.Sin(Time.time) * Time.deltaTime;
+        if (_Obstacle_Type != OBSTACLE_TYPE.BalloonMobile)
+        {
+            _newPosition = transform.position;
+            _newPosition.y += Mathf.Sin(Time.time) * Time.deltaTime;
+        }
+        else
+        {
+            _newPosition = transform.position;
+            _newPosition.x += Mathf.Sin(Time.time) * Time.deltaTime;
+        }
         transform.position = _newPosition;
         transform.position = Vector3.MoveTowards(transform.position , _player.position, _speed * Time.deltaTime);
     }
@@ -85,7 +93,6 @@ public class Balloon : MonoBehaviour
     }
     
     
-    
    
 }
 public enum OBSTACLE_TYPE
@@ -96,4 +103,5 @@ public enum OBSTACLE_TYPE
     HeavyBalloon,
     ExtraLifePowerUp,
     HealPowerUp,
+    BalloonMobile
 }
