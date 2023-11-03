@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d2db1ac496c8941ac86fc4d91d8aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPosition: {x: 0, y: 0, z: 117.7}
+  _spawnPosition: {x: 0, y: 0, z: 117.75}
   tileType: 2
 --- !u!1 &5653531192039848961
 GameObject:

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,11 @@ public class UImanager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("TileMovemenent");
+    }
+
+    public void LoadScene(String scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
 
