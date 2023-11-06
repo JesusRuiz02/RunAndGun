@@ -18,6 +18,12 @@ public class Bullet : MonoBehaviour
                 other.GetComponent<Balloon>().BalloonExplosion();
                 other.gameObject.SetActive(false);
             }
+            if (other.GetComponent<Balloon>()._Obstacle_Type == OBSTACLE_TYPE.ShapeBalloon)
+            {
+                PlayerController.instance.AddScore(1);
+                other.GetComponent<Balloon>().MakeExplosionShape();
+                other.gameObject.SetActive(false);
+            }
             if (other.GetComponent<Balloon>()._Obstacle_Type == OBSTACLE_TYPE.BalloonMobile)
             {
                 PlayerController.instance.AddScore(1);

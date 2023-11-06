@@ -1,15 +1,14 @@
 using System;
 using System.Collections;
 using TMPro;
-using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject _crashParticle;
     public static PlayerController instance;
+    private GameObject _canvasPause;
     [SerializeField] private AudioClip BulletSfx;
     private float _shots = default;
     [SerializeField] private AudioClip _song = default;
@@ -17,8 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textScore;
     [SerializeField] private float _throwForce;
     [SerializeField] private float _throwUpForce;
-    [SerializeField] private GameObject canvasGameOver;
-    [SerializeField] private AudioClip _popSfx = default;
+    [SerializeField] private GameObject canvasGameOver; 
     [SerializeField] private float score = default;
     [SerializeField] private TextMeshProUGUI _scoreText = default;
     private HealthController _healthController = default;
@@ -56,45 +54,20 @@ public class PlayerController : MonoBehaviour
         }
         if (score >= 80)
         {
-            GameManager.instance.SpawnObstacleNPowerUps(13f,OBSTACLE_TYPE.BalloonMobile);
+            GameManager.instance.SpawnObstacleNPowerUps(25f,OBSTACLE_TYPE.ShapeBalloon);
         }
         GameManager.instance.SpawnObstacleNPowerUps(9f,OBSTACLE_TYPE.BalloonSpawner);
         GameManager.instance.SpawnObstacleNPowerUps(30f,OBSTACLE_TYPE.PowerUp);
         GameManager.instance.SpawnObstacleNPowerUps(40f, OBSTACLE_TYPE.HealPowerUp);
+        GameManager.instance.SpawnObstacleNPowerUps(13f,OBSTACLE_TYPE.BalloonMobile);
         GameManager.instance.SpawnObstacleNPowerUps(36f, OBSTACLE_TYPE.ExtraLifePowerUp);
     }
     
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Balloon"))
-        {
-            _healthController.ReduceHealth();
-            Health();
-            AudioManager.instance.PlaySFX(_popSfx);
-            other.gameObject.SetActive(false);
-            Camera.main.DOShakePosition(0.25f, new Vector3(0, 2, 0), 80, 90f, true);
-        }
-
-        if (other.CompareTag("PowerUp"))
-        {
-            CallCoroutine();
-            other.gameObject.SetActive(false);
-        }
-
-        if (other.CompareTag("Wall"))
-        {
-            other.gameObject.SetActive(false);
-           GameObject particle = Instantiate(_crashParticle, other.transform.position, other.transform.rotation);
-            Destroy(particle, 1f);
-            GameOver();
-        }
-        
-    }
-
+    
     public void GameOver()
     {
         canvasGameOver.SetActive(true);
+        _canvasPause.SetActive(false);
         float highScore = PlayerPrefs.GetFloat("highscore", score);
         float accuracy = (score / _shots ) * 100;
         double _accuracy = Math.Round(accuracy, 2);

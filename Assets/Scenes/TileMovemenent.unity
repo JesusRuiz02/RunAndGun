@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43658987, g: 0.7540857, b: 1.0285602, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366087, g: 0.7540884, b: 1.0285624, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 131458289}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: SpawnTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,7 +228,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1659682180}
   m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &131458287
@@ -270,7 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae52ddaead28164abb4b363215f5ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crashParticle: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
   BulletSfx: {fileID: 8300000, guid: e457c080226fa034984b222c3aa8772f, type: 3}
   _song: {fileID: 8300000, guid: 0a6fa8d7e8987924fb71abe48f2f3cfc, type: 3}
   _textAccuracy: {fileID: 170272391}
@@ -278,7 +278,6 @@ MonoBehaviour:
   _throwForce: 30
   _throwUpForce: 5
   canvasGameOver: {fileID: 1434394504}
-  _popSfx: {fileID: 8300000, guid: fa53c3233c089bf45816f85ea34a3426, type: 3}
   score: 0
   _scoreText: {fileID: 1391851965}
 --- !u!114 &131458289
@@ -845,6 +844,7 @@ MonoBehaviour:
   - {fileID: 948751400811554054, guid: ea647ac8209eed14789e79429e5a47c0, type: 3}
   - {fileID: 4781563148955280833, guid: 5e7212275618e3b419cf7ab56e7dc77a, type: 3}
   - {fileID: 1839795300989914172, guid: f1d056a097dec30438b3435a56fd3f0d, type: 3}
+  - {fileID: 453567296149671385, guid: acc417e1f5bc36c418a10ff7b3b3b53a, type: 3}
   _ballonSpeedRate: 2
 --- !u!1001 &388825062
 PrefabInstance:
@@ -3669,6 +3669,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b170940167a3f147bdb47250664d030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1659682179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659682180}
+  - component: {fileID: 1659682181}
+  - component: {fileID: 1659682182}
+  - component: {fileID: 1659682183}
+  m_Layer: 0
+  m_Name: CollisionPlayer
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1659682180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659682179}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 131458286}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1659682181
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659682179}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15.066283, y: 10, z: 1}
+  m_Center: {x: 0.05809927, y: 1.4031477, z: 0}
+--- !u!54 &1659682182
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659682179}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1659682183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659682179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64622a2da966eb14db1107bb62ceeeab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _crashParticle: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
+  _popSfx: {fileID: 8300000, guid: fa53c3233c089bf45816f85ea34a3426, type: 3}
+  _healthController: {fileID: 131458289}
 --- !u!1 &1681995708
 GameObject:
   m_ObjectHideFlags: 0

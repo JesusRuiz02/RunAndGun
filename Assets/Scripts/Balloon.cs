@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor;
 
 public class Balloon : MonoBehaviour
 {
     private int BalloonLife = 5;
     private Renderer _renderer;
+    [SerializeField] private bool playerAttack;
     [SerializeField] private float _speed = default;
     [SerializeField] private Vector3 _newPosition = default;
     [SerializeField] private Transform _player = default;
@@ -31,8 +33,27 @@ public class Balloon : MonoBehaviour
             _newPosition = transform.position;
             _newPosition.x += Mathf.Sin(Time.time) * Time.deltaTime;
         }
-        transform.position = _newPosition;
-        transform.position = Vector3.MoveTowards(transform.position , _player.position, _speed * Time.deltaTime);
+        if (playerAttack)
+        {
+           
+            transform.position = Vector3.MoveTowards(transform.position , _player.position, _speed * Time.deltaTime);  
+        }
+        else
+        {
+            transform.position = _newPosition;
+            transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        }
+       
+    }
+
+    public void MakeExplosionShape()
+    {
+        foreach (var explosionTransform in BalloonExplosionTransform)
+        {
+            GameObject balloon = SpawnerBalloon.instance.GetPooledObject(OBSTACLE_TYPE.Balloon);
+            balloon.transform.position = transform.position;
+            balloon.transform.DOMove(explosionTransform.position, 0.4f).SetEase(Ease.Flash);
+        }
     }
 
     public void CreateParticula()
@@ -103,5 +124,6 @@ public enum OBSTACLE_TYPE
     HeavyBalloon,
     ExtraLifePowerUp,
     HealPowerUp,
-    BalloonMobile
+    BalloonMobile,
+    ShapeBalloon
 }

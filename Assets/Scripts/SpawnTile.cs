@@ -12,7 +12,7 @@ public class SpawnTile : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("SpawnTile"))
         {
             GameObject tiles = TilePool._Instance.GetPooledObjects(TilePool._Instance.NextTileToSpawn);
             TilePool._Instance.ChangeNextTypeTileToPool(TileType.PostBridgeTile);
