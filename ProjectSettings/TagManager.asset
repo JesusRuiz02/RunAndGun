@@ -16,6 +16,7 @@ TagManager:
   - Wall
   - SFX
   - Music
+  - SpawnTile
   layers:
   - Default
   - TransparentFX
