@@ -50,7 +50,7 @@ public class Balloon : MonoBehaviour
     {
         foreach (var explosionTransform in BalloonExplosionTransform)
         {
-            GameObject balloon = SpawnerBalloon.instance.GetPooledObject(OBSTACLE_TYPE.Balloon);
+            GameObject balloon = SpawnerBalloon.instance.GetPooledObject(OBSTACLE_TYPE.BalloonMobile);
             balloon.transform.position = transform.position;
             balloon.transform.DOMove(explosionTransform.position, 0.4f).SetEase(Ease.Flash);
         }
@@ -67,7 +67,7 @@ public class Balloon : MonoBehaviour
     {
         for (int i = 0; i < 2; i++)
         {
-           GameObject balloon = SpawnerBalloon.instance.GetPooledObject(OBSTACLE_TYPE.Balloon);
+           GameObject balloon = SpawnerBalloon.instance.GetPooledObject(OBSTACLE_TYPE.BalloonMobile);
            balloon.transform.position = transform.position;
            int random = Random.Range(0, 7);
            balloon.transform.DOMove(BalloonExplosionTransform[random].position, 0.4f).SetEase(Ease.Flash);

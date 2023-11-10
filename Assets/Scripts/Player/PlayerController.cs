@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-    private GameObject _canvasPause;
+    [SerializeField]  private GameObject _canvasPause;
     [SerializeField] private AudioClip BulletSfx;
     private float _shots = default;
     [SerializeField] private AudioClip _song = default;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.instance.SpawnObstacleNPowerUps(16f,OBSTACLE_TYPE.HeavyBalloon);
         }
-        if (score >= 80)
+        if (score >= 0)
         {
             GameManager.instance.SpawnObstacleNPowerUps(25f,OBSTACLE_TYPE.ShapeBalloon);
         }
