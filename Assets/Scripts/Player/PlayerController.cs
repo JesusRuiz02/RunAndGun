@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using TMPro;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]  private GameObject _canvasPause;
     [SerializeField] private AudioClip BulletSfx;
     private float _shots = default;
+    [SerializeField] private AudioClip _popSfx = default;
     [SerializeField] private AudioClip _song = default;
     [SerializeField] private TextMeshProUGUI _textAccuracy;
     [SerializeField] private TextMeshProUGUI _textScore;
@@ -62,8 +64,20 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.SpawnObstacleNPowerUps(13f,OBSTACLE_TYPE.BalloonMobile);
         GameManager.instance.SpawnObstacleNPowerUps(36f, OBSTACLE_TYPE.ExtraLifePowerUp);
     }
-    
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Balloon"))
+        {
+            _healthController.ReduceHealth();
+            PlayerController.instance.Health();
+            AudioManager.instance.PlaySFX(_popSfx);
+            other.gameObject.SetActive(false);
+            Camera.main.DOShakePosition(0.25f, new Vector3(0, 2, 0), 80, 90f, true);
+        }
+    }
+
+
     public void GameOver()
     {
         canvasGameOver.SetActive(true);
@@ -117,7 +131,6 @@ public class PlayerController : MonoBehaviour
     {
         _healthController.AddExtraLife();
     }
-
 
     public IEnumerator PowerUp()
     {

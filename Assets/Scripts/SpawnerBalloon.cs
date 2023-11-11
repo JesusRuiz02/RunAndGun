@@ -36,7 +36,9 @@ public class SpawnerBalloon : MonoBehaviour
         _ballonSpeedRate -= Time.deltaTime;
         if (_ballonSpeedRate <= 0 )
         {
-            GetPooledObject(OBSTACLE_TYPE.Balloon);
+            int random = Random.Range(0, 3);
+            var spawnBalloon = random >= 2 ? OBSTACLE_TYPE.Balloon : OBSTACLE_TYPE.BalloonMobile;
+            GetPooledObject(spawnBalloon);
             _ballonSpeedRate = 2;
         }
     }

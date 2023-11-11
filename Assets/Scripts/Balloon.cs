@@ -23,16 +23,8 @@ public class Balloon : MonoBehaviour
 
     private void Update()
     {
-        if (_Obstacle_Type != OBSTACLE_TYPE.BalloonMobile)
-        {
-            _newPosition = transform.position;
-            _newPosition.y += Mathf.Sin(Time.time) * Time.deltaTime;
-        }
-        else
-        {
-            _newPosition = transform.position;
-            _newPosition.x += Mathf.Sin(Time.time) * Time.deltaTime;
-        }
+       _newPosition = transform.position;
+       _newPosition.y += Mathf.Sin(Time.time) * Time.deltaTime;
         if (playerAttack)
         {
            
@@ -43,7 +35,6 @@ public class Balloon : MonoBehaviour
             transform.position = _newPosition;
             transform.Translate(Vector3.up * _speed * Time.deltaTime);
         }
-       
     }
 
     public void MakeExplosionShape()

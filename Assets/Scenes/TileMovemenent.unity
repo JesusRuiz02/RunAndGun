@@ -273,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasPause: {fileID: 435720599}
   BulletSfx: {fileID: 8300000, guid: e457c080226fa034984b222c3aa8772f, type: 3}
+  _popSfx: {fileID: 8300000, guid: fa53c3233c089bf45816f85ea34a3426, type: 3}
   _song: {fileID: 8300000, guid: 0a6fa8d7e8987924fb71abe48f2f3cfc, type: 3}
   _textAccuracy: {fileID: 170272391}
   _textScore: {fileID: 1561357144}
