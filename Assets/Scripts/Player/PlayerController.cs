@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         score += scoreToAdd;
         _scoreText.text = score.ToString();
-        if (score >= 50)
+        if (score >= 100)
         {
             GameManager.instance.SpawnObstacleNPowerUps(16f,OBSTACLE_TYPE.HeavyBalloon);
         }
@@ -61,8 +61,8 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.SpawnObstacleNPowerUps(9f,OBSTACLE_TYPE.BalloonSpawner);
         GameManager.instance.SpawnObstacleNPowerUps(30f,OBSTACLE_TYPE.PowerUp);
         GameManager.instance.SpawnObstacleNPowerUps(40f, OBSTACLE_TYPE.HealPowerUp);
-        GameManager.instance.SpawnObstacleNPowerUps(13f,OBSTACLE_TYPE.BalloonMobile);
         GameManager.instance.SpawnObstacleNPowerUps(36f, OBSTACLE_TYPE.ExtraLifePowerUp);
+        GameManager.instance.SpawnObstacleNPowerUps(38f, OBSTACLE_TYPE.Door);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Balloon"))
         {
             _healthController.ReduceHealth();
-            PlayerController.instance.Health();
+             Health();
             AudioManager.instance.PlaySFX(_popSfx);
             other.gameObject.SetActive(false);
             Camera.main.DOShakePosition(0.25f, new Vector3(0, 2, 0), 80, 90f, true);

@@ -7,23 +7,33 @@ public class Door : MonoBehaviour
 {
     private Animator _animatorParent;
     [SerializeField] private String _triggerString = "Open";
+    [SerializeField] private List<GameObject> _keysList = new List<GameObject>();
 
     private void Awake()
     {
         _animatorParent = gameObject.transform.GetComponentInParent<Animator>();
     }
-    
 
-    private void OnTriggerEnter(Collider other)
+    public void DoorCheck()
     {
-        if (other.CompareTag("Bullet"))
+        bool keysAreInactive = true;
+        foreach (var keys in _keysList)
         {
-           _animatorParent.SetTrigger(_triggerString);
+            keysAreInactive = keys.activeInHierarchy;
+        }
+        if (!keysAreInactive)
+        {
+            _animatorParent.SetTrigger(_triggerString);
         }
     }
-
+    
+    
     private void OnEnable()
     {
+        foreach (var keys in _keysList)
+        {
+           keys.SetActive(true);  
+        }
         _animatorParent.Play("Regresar");
     }
 

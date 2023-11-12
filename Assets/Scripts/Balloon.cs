@@ -19,22 +19,35 @@ public class Balloon : MonoBehaviour
         _renderer = GetComponent<Renderer>();
         _player = Camera.main.transform;
         _speed += PlayerController.instance.Score / 5 ;
+        if (_Obstacle_Type == OBSTACLE_TYPE.Door)
+        {
+            _speed += PlayerController.instance.Score / 10 ;
+            transform.position = new Vector3(0,0.4f,125);
+            transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+        }
     }
 
     private void Update()
     {
-       _newPosition = transform.position;
-       _newPosition.y += Mathf.Sin(Time.time) * Time.deltaTime;
-        if (playerAttack)
+        if (_Obstacle_Type != OBSTACLE_TYPE.Door)
         {
-           
-            transform.position = Vector3.MoveTowards(transform.position , _player.position, _speed * Time.deltaTime);  
+            _newPosition = transform.position;
+            _newPosition.y += Mathf.Sin(Time.time) * Time.deltaTime;
+            transform.position = _newPosition;
+            if (playerAttack)
+            {
+                transform.position = Vector3.MoveTowards(transform.position , _player.position, _speed * Time.deltaTime);  
+            }
+            else
+            {
+                transform.Translate(Vector3.up * _speed * Time.deltaTime);
+            }
         }
         else
         {
-            transform.position = _newPosition;
-            transform.Translate(Vector3.up * _speed * Time.deltaTime);
+            transform.Translate(Vector3.forward * _speed * Time.deltaTime);
         }
+
     }
 
     public void MakeExplosionShape()
@@ -116,5 +129,6 @@ public enum OBSTACLE_TYPE
     ExtraLifePowerUp,
     HealPowerUp,
     BalloonMobile,
-    ShapeBalloon
+    ShapeBalloon,
+    Door
 }
