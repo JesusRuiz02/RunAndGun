@@ -21,10 +21,17 @@ public class CollisionManager : MonoBehaviour
         
         if (other.CompareTag("Wall"))
         {
-            other.gameObject.SetActive(false);
-            GameObject particle = Instantiate(_crashParticle, other.transform.position, other.transform.rotation);
-            Destroy(particle, 1f);
-            PlayerController.instance.GameOver();
+            if (other.GetComponentInParent<Balloon>()._Obstacle_Type != OBSTACLE_TYPE.Door)
+            {
+                GameObject particle = Instantiate(_crashParticle, other.transform.position, other.transform.rotation);
+                Destroy(particle, 1f);
+                other.gameObject.SetActive(false);
+                PlayerController.instance.GameOver(); 
+            }
+            else
+            {
+                other.gameObject.SetActive(false);
+            }
         }
     }
 
