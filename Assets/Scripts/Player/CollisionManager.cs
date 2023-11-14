@@ -12,7 +12,6 @@ public class CollisionManager : MonoBehaviour
     {
         if (other.CompareTag("Balloon"))
         {
-            _healthController.ReduceHealth();
             PlayerController.instance.Health();
             AudioManager.instance.PlaySFX(_popSfx);
             other.gameObject.SetActive(false);

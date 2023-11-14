@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         }
         GameManager.instance.SpawnObstacleNPowerUps(9f,OBSTACLE_TYPE.BalloonSpawner);
         GameManager.instance.SpawnObstacleNPowerUps(30f,OBSTACLE_TYPE.PowerUp);
-        GameManager.instance.SpawnObstacleNPowerUps(40f, OBSTACLE_TYPE.HealPowerUp);
+        GameManager.instance.SpawnObstacleNPowerUps(10f, OBSTACLE_TYPE.HealPowerUp);
         GameManager.instance.SpawnObstacleNPowerUps(36f, OBSTACLE_TYPE.ExtraLifePowerUp);
         GameManager.instance.SpawnObstacleNPowerUps(38f, OBSTACLE_TYPE.Door);
     }
@@ -69,8 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Balloon"))
         {
-            _healthController.ReduceHealth();
-             Health();
+            Health();
             AudioManager.instance.PlaySFX(_popSfx);
             other.gameObject.SetActive(false);
             Camera.main.DOShakePosition(0.25f, new Vector3(0, 2, 0), 80, 90f, true);
@@ -99,7 +98,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!_isInmune)
         {
-            _healthController.UpdateHealth();
+            _healthController.ReduceHealth();
         }
     }
     

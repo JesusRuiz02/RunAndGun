@@ -26,7 +26,6 @@ public class Balloon : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
         }
     }
-
     private void Update()
     {
         if (_Obstacle_Type != OBSTACLE_TYPE.Door)

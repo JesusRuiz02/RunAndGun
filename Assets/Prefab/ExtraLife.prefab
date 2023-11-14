@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: -5988338535566989004}
   m_Layer: 0
   m_Name: ExtraLife
-  m_TagString: Untagged
+  m_TagString: ExtraLife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459f2bd2e4d3b56419a9fc6c12c5cd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAttack: 0
   _speed: 12
   _newPosition: {x: 0, y: 0, z: 0}
   _player: {fileID: 0}

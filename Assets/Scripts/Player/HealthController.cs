@@ -13,13 +13,9 @@ public class HealthController : MonoBehaviour
     private void Awake()
     {
         _playerController = gameObject.GetComponent<PlayerController>();
-    }
-
-    private void Update()
-    {
         UpdateHealth();
     }
-
+    
     public void UpdateHealth()
     {
         if (_playerHealth <= 0 )
