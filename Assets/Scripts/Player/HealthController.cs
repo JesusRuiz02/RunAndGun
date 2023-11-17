@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 public class HealthController : MonoBehaviour
@@ -15,7 +16,7 @@ public class HealthController : MonoBehaviour
         _playerController = gameObject.GetComponent<PlayerController>();
     }
 
-    private void Update()
+    private void Start()
     {
         UpdateHealth();
     }
