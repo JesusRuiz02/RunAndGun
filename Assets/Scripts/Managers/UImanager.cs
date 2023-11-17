@@ -10,6 +10,8 @@ public class UImanager : MonoBehaviour
     [SerializeField] private RectTransform _rectAudioTransform;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private CanvasGroup _canvasAudioGroup;
+    [SerializeField] private CanvasGroup _gameOverGroup;
+    [SerializeField] private RectTransform _gameOverectTransform;
     [SerializeField] private bool _isPause = false;
 
     public void RestartGame()
@@ -31,6 +33,14 @@ public class UImanager : MonoBehaviour
         _rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
         _rectTransform.DOAnchorPos(new Vector2(0f, 0f), _fadeTime, false).SetEase(Ease.OutElastic).SetUpdate(true);
         _canvasGroup.DOFade(1, _fadeTime).SetUpdate(true);
+    }
+
+    public void GameOverFadeIn()
+    {
+        _gameOverGroup.alpha = 0f;
+        _gameOverectTransform.transform.localPosition =  new Vector3(0f, -1000f, 0f);
+        _gameOverectTransform.DOAnchorPos(new Vector2(0f, 0f), _fadeTime, false).SetEase(Ease.OutElastic).SetUpdate(true);
+        _gameOverGroup.DOFade(1, _fadeTime).SetUpdate(true);
     }
 
     private void TooglePause()

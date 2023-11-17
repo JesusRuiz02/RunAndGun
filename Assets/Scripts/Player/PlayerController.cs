@@ -8,7 +8,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private UImanager _uImanager;
     public static PlayerController instance;
+    [SerializeField] private GameObject _invincibleCanvas;
     [SerializeField]  private GameObject _canvasPause;
     [SerializeField] private AudioClip BulletSfx;
     private float _shots = default;
@@ -18,7 +20,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textScore;
     [SerializeField] private float _throwForce;
     [SerializeField] private float _throwUpForce;
-    [SerializeField] private GameObject canvasGameOver; 
     [SerializeField] private float score = default;
     [SerializeField] private TextMeshProUGUI _scoreText = default;
     private HealthController _healthController = default;
@@ -80,8 +81,7 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver()
     {
-        canvasGameOver.SetActive(true);
-        _canvasPause.SetActive(false);
+        _uImanager.GameOverFadeIn();
         float highScore = PlayerPrefs.GetFloat("highscore", score);
         float accuracy = (score / _shots ) * 100;
         double _accuracy = Math.Round(accuracy, 2);
@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
         }
         _textScore.text = "Highscore : " + highScore;
         _textAccuracy.text = "Accuracy : " + _accuracy + "%";
+        _canvasPause.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -135,7 +136,9 @@ public class PlayerController : MonoBehaviour
     public IEnumerator PowerUp()
     {
         _isInmune = true;
+        _invincibleCanvas.SetActive(true);
         yield return new WaitForSeconds(7.0f);
+        _invincibleCanvas.SetActive(false);
         _isInmune = false;
     }
 }
