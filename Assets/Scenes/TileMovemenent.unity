@@ -18,7 +18,7 @@ RenderSettings:
   m_FogColor: {r: 0.06581525, g: 0.56078434, b: 0.8207547, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.02
-  m_LinearFogStart: 60
+  m_LinearFogStart: 70
   m_LinearFogEnd: 90
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4366087, g: 0.7540884, b: 1.0285624, a: 1}
+  m_IndirectSpecularColor: {r: 0.43807903, g: 0.7539444, b: 1.0314844, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -356,7 +356,6 @@ MonoBehaviour:
   _textScore: {fileID: 615099415}
   _throwForce: 30
   _throwUpForce: 5
-  canvasGameOver: {fileID: 0}
   score: 0
   _scoreText: {fileID: 1391851965}
 --- !u!114 &131458289
@@ -1321,7 +1320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -67.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3045,7 +3044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.299988
+      value: -60.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3602,7 +3601,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1303080004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 435720604}
+        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1303080004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4896,11 +4907,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.13912
+      value: 18.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.400009
+      value: -41.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5093,7 +5104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -76.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5216,15 +5227,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.200005
+      value: 21.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.13912
+      value: 18.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.400009
+      value: -34.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 177c7cf2b21a77e469b56189e3d2fb43, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5502,6 +5513,30 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1420588420}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1391851963}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1799817040}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

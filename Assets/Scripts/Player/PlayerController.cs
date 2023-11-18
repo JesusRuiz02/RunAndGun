@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Balloon"))
         {
-            _healthController.ReduceHealth();
+            //_healthController.ReduceHealth();
              Health();
             AudioManager.instance.PlaySFX(_popSfx);
             other.gameObject.SetActive(false);
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!_isInmune)
         {
-            _healthController.UpdateHealth();
+            _healthController.ReduceHealth();
         }
     }
     
