@@ -21,9 +21,12 @@ public class Balloon : MonoBehaviour
         _speed += PlayerController.instance.Score / 5 ;
         if (_Obstacle_Type == OBSTACLE_TYPE.Door)
         {
-            _speed += PlayerController.instance.Score / 10 ;
             transform.position = new Vector3(0,0.4f,125);
             transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+        }
+        else if(_Obstacle_Type == OBSTACLE_TYPE.ExtraLifePowerUp)
+        {
+            transform.position = new Vector3(0,0.4f,125);
         }
     }
 

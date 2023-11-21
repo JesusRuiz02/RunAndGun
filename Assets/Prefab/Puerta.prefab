@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81352194905676506, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
       propertyPath: m_Name
@@ -120,47 +120,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6995894413308367120}
-    - targetCorrespondingSourceObject: {fileID: -3575822069440562721, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7239196969648820204}
     - targetCorrespondingSourceObject: {fileID: 6592401360930831907, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7042589223063193591}
-    - targetCorrespondingSourceObject: {fileID: 81352194905676506, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 6592401360930831907, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3310568956260138879}
+      addedObject: {fileID: 73864007147514604}
   m_SourcePrefab: {fileID: 100100000, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
 --- !u!4 &1407498466320806992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
   m_PrefabInstance: {fileID: 1441935938384565179}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1523285928763001185 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 81352194905676506, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
-  m_PrefabInstance: {fileID: 1441935938384565179}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &3310568956260138879
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523285928763001185}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.08538173, y: 0.004144588, z: 0.13239782}
-  m_Center: {x: -0.04522253, y: 0, z: 0.066056825}
 --- !u!1 &1784446663595994858 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
@@ -230,20 +201,15 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.08538196, y: 0.004144588, z: 0.13239782}
-  m_Center: {x: 0.04344357, y: 0, z: 0.066056825}
---- !u!1 &6513025148117199460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -3575822069440562721, guid: 6ecb613d190843c4794cd8a6f43a529d, type: 3}
-  m_PrefabInstance: {fileID: 1441935938384565179}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7239196969648820204
+  m_Size: {x: 0.17076392, y: 0.004144588, z: 0.13239782}
+  m_Center: {x: 0.08688714, y: 0, z: 0.066056825}
+--- !u!114 &73864007147514604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6513025148117199460}
+  m_GameObject: {fileID: 5728054279157935512}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0015576d2b6a0a24b9d92d98b206ba82, type: 3}
@@ -352,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f8c9aca903ab5409d6382433c173bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _door: {fileID: 7239196969648820204}
+  _door: {fileID: 73864007147514604}
   _explosionParticle: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
   _explosionTransform: {fileID: 6839328419063316973}
 --- !u!135 &6618348463969334036

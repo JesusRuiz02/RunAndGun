@@ -527,6 +527,8 @@ MonoBehaviour:
   _rectAudioTransform: {fileID: 1126041941}
   _canvasGroup: {fileID: 0}
   _canvasAudioGroup: {fileID: 1126041942}
+  _gameOverGroup: {fileID: 0}
+  _gameOverectTransform: {fileID: 0}
   _isPause: 0
 --- !u!114 &424179681
 MonoBehaviour:
@@ -1370,6 +1372,18 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6103711182364899389, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+    - target: {fileID: 6103711182364899389, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+    - target: {fileID: 6103711182364899389, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6551173316961936801, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
       propertyPath: m_Type
       value: 0
@@ -1385,6 +1399,18 @@ PrefabInstance:
     - target: {fileID: 6909580599754873103, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeMusicSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974323515502001783, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+    - target: {fileID: 8974323515502001783, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+    - target: {fileID: 8974323515502001783, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

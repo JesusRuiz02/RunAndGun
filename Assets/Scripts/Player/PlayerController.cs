@@ -70,11 +70,20 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Balloon"))
         {
-            //_healthController.ReduceHealth();
-             Health();
+            Health();
             AudioManager.instance.PlaySFX(_popSfx);
             other.gameObject.SetActive(false);
             Camera.main.DOShakePosition(0.25f, new Vector3(0, 2, 0), 80, 90f, true);
+        }
+        if (other.CompareTag("Wall"))
+        {
+            if (other.GetComponent<Door>().IsOpened == false)
+            {
+                Camera.main.transform.DOMoveY(0.6f, 0.5f, true).SetEase(Ease.OutElastic).SetUpdate(true);
+                Camera.main.transform.DORotate(new Vector3(-90, 0, 0), 0.3f).SetUpdate(true).SetEase(Ease.Flash);
+                GameOver(); 
+            }
+            other.gameObject.SetActive(false);
         }
     }
 
@@ -137,7 +146,19 @@ public class PlayerController : MonoBehaviour
     {
         _isInmune = true;
         _invincibleCanvas.SetActive(true);
-        yield return new WaitForSeconds(7.0f);
+        yield return new WaitForSeconds(4.0f);
+        _invincibleCanvas.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        _invincibleCanvas.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        _invincibleCanvas.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        _invincibleCanvas.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        _invincibleCanvas.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        _invincibleCanvas.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
         _invincibleCanvas.SetActive(false);
         _isInmune = false;
     }

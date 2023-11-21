@@ -6,6 +6,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private Animator _animatorParent;
+    private bool _isOpened;
+    public bool IsOpened => _isOpened;
     [SerializeField] private String _triggerString = "Open";
     [SerializeField] private List<GameObject> _keysList = new List<GameObject>();
 
@@ -25,6 +27,7 @@ public class Door : MonoBehaviour
         {
             _animatorParent.SetTrigger(_triggerString);
         }
+        _isOpened = !keysAreInactive;
     }
     
     

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43807903, g: 0.7539444, b: 1.0314844, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366087, g: 0.7540884, b: 1.0285624, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1544,8 +1544,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Highscore : '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+  m_sharedMaterial: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2279,7 +2279,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3893,8 +3893,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+  m_sharedMaterial: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5342,8 +5342,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Accuracy :'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+  m_sharedMaterial: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6179,10 +6179,34 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6103711182364899389, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+    - target: {fileID: 6103711182364899389, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+    - target: {fileID: 6103711182364899389, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6909580599754873103, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 435720605}
+    - target: {fileID: 8974323515502001783, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+    - target: {fileID: 8974323515502001783, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+    - target: {fileID: 8974323515502001783, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
