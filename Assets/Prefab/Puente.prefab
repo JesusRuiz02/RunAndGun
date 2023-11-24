@@ -975,8 +975,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _triggerString: Open
   _keysList:
-  - {fileID: 7614181054636445660}
   - {fileID: 3822482140713766718}
+  - {fileID: 7614181054636445660}
 --- !u!4 &2812775135963914273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16aa26637570f1541b565e4754806254, type: 3}

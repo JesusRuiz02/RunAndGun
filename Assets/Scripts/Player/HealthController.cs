@@ -72,7 +72,7 @@ public class HealthController : MonoBehaviour
     public void AddExtraLife()
     {
         _healthNumber += 1;
-        _playerHealth = _healthNumber;
+      //_playerHealth = _healthNumber;
         if (_healthNumber > 5)
         {
             _healthNumber = 5;

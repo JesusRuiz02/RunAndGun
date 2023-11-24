@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
         {
             if (other.GetComponent<Door>().IsOpened == false)
             {
+                other.transform.parent.gameObject.SetActive(false); 
                 Camera.main.transform.DOMoveY(0.6f, 0.5f, true).SetEase(Ease.OutElastic).SetUpdate(true);
                 Camera.main.transform.DORotate(new Vector3(-90, 0, 0), 0.3f).SetUpdate(true).SetEase(Ease.Flash);
                 GameOver(); 
@@ -123,7 +124,7 @@ public class PlayerController : MonoBehaviour
         Vector3 forceToAdd = forceDirection * _throwForce + transform.up * _throwUpForce;
 
         projectile.GetComponent<Rigidbody>().AddForce(forceToAdd, ForceMode.Impulse);
-        
+
         AudioManager.instance.PlaySFX(BulletSfx);
     }
 
@@ -146,7 +147,19 @@ public class PlayerController : MonoBehaviour
     {
         _isInmune = true;
         _invincibleCanvas.SetActive(true);
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(3.0f);
+        _invincibleCanvas.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        _invincibleCanvas.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        _invincibleCanvas.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        _invincibleCanvas.SetActive(true);
+        yield return new WaitForSeconds(0.8f);
+        _invincibleCanvas.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        _invincibleCanvas.SetActive(true);
+        yield return new WaitForSeconds(0.6f);
         _invincibleCanvas.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         _invincibleCanvas.SetActive(true);
@@ -155,10 +168,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         _invincibleCanvas.SetActive(true);
         yield return new WaitForSeconds(0.2f);
-        _invincibleCanvas.SetActive(false);
-        yield return new WaitForSeconds(0.1f);
-        _invincibleCanvas.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
         _invincibleCanvas.SetActive(false);
         _isInmune = false;
     }

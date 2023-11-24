@@ -18,16 +18,18 @@ public class Door : MonoBehaviour
 
     public void DoorCheck()
     {
-        bool keysAreInactive = true;
+        int keysClose = 0;
         foreach (var keys in _keysList)
         {
-            keysAreInactive = keys.activeInHierarchy;
+            keysClose += keys.activeInHierarchy ? 1 : 0;
+            Debug.Log(keysClose);
         }
-        if (!keysAreInactive)
+        if (keysClose == 0)
         {
             _animatorParent.SetTrigger(_triggerString);
+            _isOpened = true;
         }
-        _isOpened = !keysAreInactive;
+      
     }
     
     
@@ -37,6 +39,7 @@ public class Door : MonoBehaviour
         {
            keys.SetActive(true);  
         }
+        _isOpened = false;
         _animatorParent.Play("Regresar");
     }
 
