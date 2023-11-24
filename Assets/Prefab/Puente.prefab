@@ -440,7 +440,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3231555249626336638}
-  - component: {fileID: 6441266963295421792}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -465,22 +464,6 @@ Transform:
   - {fileID: 4487836950143997316}
   m_Father: {fileID: 2812775135963914273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6441266963295421792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4347211445663214163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0015576d2b6a0a24b9d92d98b206ba82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerString: Open
-  _keysList:
-  - {fileID: 7614181054636445660}
-  - {fileID: 3822482140713766718}
 --- !u!1 &4488692716256148648
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,6 +930,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5260911882152102220, guid: 16aa26637570f1541b565e4754806254, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6727539529994818348}
+    - targetCorrespondingSourceObject: {fileID: -5260911882152102220, guid: 16aa26637570f1541b565e4754806254, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3147478417562580978}
   m_SourcePrefab: {fileID: 100100000, guid: 16aa26637570f1541b565e4754806254, type: 3}
 --- !u!1 &1621078078382043518 stripped
 GameObject:
@@ -975,6 +961,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 110662008458720181, guid: 16aa26637570f1541b565e4754806254, type: 3}
+--- !u!114 &3147478417562580978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621078078382043518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0015576d2b6a0a24b9d92d98b206ba82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerString: Open
+  _keysList:
+  - {fileID: 3822482140713766718}
+  - {fileID: 7614181054636445660}
 --- !u!4 &2812775135963914273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16aa26637570f1541b565e4754806254, type: 3}
@@ -1387,7 +1389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f8c9aca903ab5409d6382433c173bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _door: {fileID: 6441266963295421792}
+  _door: {fileID: 3147478417562580978}
   _explosionParticle: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
   _explosionTransform: {fileID: 8661788997750602347}
 --- !u!65 &1066380110519645371
@@ -1951,7 +1953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f8c9aca903ab5409d6382433c173bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _door: {fileID: 6441266963295421792}
+  _door: {fileID: 3147478417562580978}
   _explosionParticle: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
   _explosionTransform: {fileID: 6426008915043116002}
 --- !u!65 &6147600625194929710

@@ -11,8 +11,12 @@ public class StartScene : MonoBehaviour
     [SerializeField] private RectTransform logoRectTransform;
     [SerializeField] private RectTransform settingsRectTransform;
     [SerializeField] private RectTransform creditsRectTransform;
+
+    
+
     void Start()
     {
+        Time.timeScale = 1;
         AudioManager.instance.PlayMusic(_lobbyMusic);
        InvokeRepeating("LogoSpin", 3, 10f);
        Invoke("StartAnimation", 0.5f);

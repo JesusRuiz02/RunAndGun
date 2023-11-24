@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEditor;
+using Random = UnityEngine.Random;
 
 public class Balloon : MonoBehaviour
 {
@@ -19,12 +21,6 @@ public class Balloon : MonoBehaviour
         _renderer = GetComponent<Renderer>();
         _player = Camera.main.transform;
         _speed += PlayerController.instance.Score / 5 ;
-        if (_Obstacle_Type == OBSTACLE_TYPE.Door)
-        {
-            _speed += PlayerController.instance.Score / 10 ;
-            transform.position = new Vector3(0,0.4f,125);
-            transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
-        }
     }
 
     private void Update()
@@ -116,9 +112,19 @@ public class Balloon : MonoBehaviour
                 break;
         }
     }
-    
-    
-   
+
+    private void OnEnable()
+    {
+        if (_Obstacle_Type == OBSTACLE_TYPE.Door)
+        {
+            transform.position = new Vector3(0,0.4f,125);
+            transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+        }
+        else if(_Obstacle_Type == OBSTACLE_TYPE.ExtraLifePowerUp)
+        {
+            transform.position = new Vector3(0,0.3f,125);
+        }
+    }
 }
 public enum OBSTACLE_TYPE
 {

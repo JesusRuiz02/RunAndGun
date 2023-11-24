@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43807903, g: 0.7539444, b: 1.0314844, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366087, g: 0.7540884, b: 1.0285624, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1544,8 +1544,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Highscore : '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+  m_sharedMaterial: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2279,7 +2279,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2331,7 +2331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &986976961
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2764,7 +2764,7 @@ GameObject:
   - component: {fileID: 1143776157}
   - component: {fileID: 1143776156}
   m_Layer: 5
-  m_Name: Creditos
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2788,7 +2788,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 123.07692, y: 38.46154}
+  m_SizeDelta: {x: 123.07692, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143776156
 MonoBehaviour:
@@ -2843,7 +2843,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Credits
+          m_StringArgument: PlayScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1143776157
@@ -2866,7 +2866,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0c85b60f3de92d24fb21da23d3f67f0f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1d6963533153ab4083575c8f303e217, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3293,15 +3293,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+  m_sharedMaterial: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3313,13 +3313,13 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 2192
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3893,15 +3893,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+  m_sharedMaterial: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4286151100
+  m_fontColor: {r: 0.735849, g: 0.47552508, b: 0.47552508, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4399,9 +4399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64622a2da966eb14db1107bb62ceeeab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crashParticle: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
   _popSfx: {fileID: 8300000, guid: fa53c3233c089bf45816f85ea34a3426, type: 3}
-  _healthController: {fileID: 131458289}
 --- !u!1 &1681995708
 GameObject:
   m_ObjectHideFlags: 0
@@ -5342,8 +5340,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Accuracy :'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
+  m_sharedMaterial: {fileID: -1336386298559586136, guid: 6a37af2a2be01a14caaaf56deb023c0f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5454,7 +5452,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 33.2}
-  m_SizeDelta: {x: 123.07692, y: 38.46154}
+  m_SizeDelta: {x: 123.07692, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887370904
 MonoBehaviour:
@@ -6096,18 +6094,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 435720604}
@@ -6123,50 +6109,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1391851963}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099924318677559454, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5777265832213051116, guid: 75542bc9d34f16e4685416a86df7bc27, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
