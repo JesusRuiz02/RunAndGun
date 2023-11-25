@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _invincibleCanvas;
     [SerializeField]  private GameObject _canvasPause;
     [SerializeField] private AudioClip BulletSfx;
+    [SerializeField] private AudioClip _WallCrash;
     private float _shots = default;
     [SerializeField] private AudioClip _popSfx = default;
     [SerializeField] private AudioClip _song = default;
@@ -73,15 +74,17 @@ public class PlayerController : MonoBehaviour
             Health();
             AudioManager.instance.PlaySFX(_popSfx);
             other.gameObject.SetActive(false);
-            Camera.main.DOShakePosition(0.25f, new Vector3(0, 2, 0), 80, 90f, true);
+            Camera.main.DOShakePosition(0.25f, new Vector3(0, 1, 0), 80, 90f, true);
         }
         if (other.CompareTag("Wall"))
         {
             if (other.GetComponent<Door>().IsOpened == false)
             {
                 other.transform.parent.gameObject.SetActive(false); 
-                Camera.main.transform.DOMoveY(0.6f, 0.5f, true).SetEase(Ease.OutElastic).SetUpdate(true);
-                Camera.main.transform.DORotate(new Vector3(-90, 0, 0), 0.3f).SetUpdate(true).SetEase(Ease.Flash);
+                Camera.main.transform.DOMoveY(0.6f, 0.7f, true).SetEase(Ease.OutElastic).SetUpdate(true);
+                Camera.main.transform.DORotate(new Vector3(-90, 0, 0), 0.4f).SetUpdate(true).SetEase(Ease.Flash);
+                AudioManager.instance.PlaySFX(_WallCrash);
+                Camera.main.DOShakePosition(0.6f, new Vector3(2, 0, 0), 80, 90f, true).SetDelay(0.5f).SetUpdate(true);
                 GameOver(); 
             }
             other.gameObject.SetActive(false);

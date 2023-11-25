@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4366087, g: 0.7540884, b: 1.0285624, a: 1}
+  m_IndirectSpecularColor: {r: 0.43807903, g: 0.7539444, b: 1.0314844, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -350,6 +350,7 @@ MonoBehaviour:
   _invincibleCanvas: {fileID: 14662961}
   _canvasPause: {fileID: 435720599}
   BulletSfx: {fileID: 8300000, guid: e457c080226fa034984b222c3aa8772f, type: 3}
+  _WallCrash: {fileID: 8300000, guid: 7c1c0d5ba8d244947965510f1aad58d8, type: 3}
   _popSfx: {fileID: 8300000, guid: fa53c3233c089bf45816f85ea34a3426, type: 3}
   _song: {fileID: 8300000, guid: 0a6fa8d7e8987924fb71abe48f2f3cfc, type: 3}
   _textAccuracy: {fileID: 1858735583}
@@ -2279,7 +2280,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 26.991467
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2331,7 +2332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &986976961
 RectTransform:
   m_ObjectHideFlags: 0
