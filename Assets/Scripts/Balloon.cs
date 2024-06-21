@@ -122,7 +122,7 @@ public class Balloon : MonoBehaviour
         }
         else if(_Obstacle_Type == OBSTACLE_TYPE.ExtraLifePowerUp)
         {
-            transform.position = new Vector3(0,0.3f,125);
+            transform.position = new Vector3(0,0.7f,125);
         }
     }
 }
