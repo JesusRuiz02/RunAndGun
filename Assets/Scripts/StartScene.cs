@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class StartScene : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class StartScene : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        AudioManager.instance.PlayMusic(_lobbyMusic);
+       AudioManager.instance.PlayMusic(_lobbyMusic);
        InvokeRepeating("LogoSpin", 3, 10f);
        Invoke("StartAnimation", 0.5f);
        Invoke("BalloonAnimation", 1.7f);
@@ -41,6 +42,10 @@ public class StartScene : MonoBehaviour
        creditsRectTransform.DOAnchorPos(new Vector2(250f, 75f), 0.5f, false).SetEase(Ease.Linear).SetUpdate(true);
     }
 
+    public void ButtonSfx()
+    {
+       AudioManager.instance.SetSound(SOUND_TYPE.UI_BUTTON_SFX);
+    }
     private void BalloonAnimation()
     {
         var sequence = DOTween.Sequence();

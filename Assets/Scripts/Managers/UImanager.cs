@@ -7,25 +7,35 @@ public class UImanager : MonoBehaviour
 {
     [SerializeField] private float _fadeTime = 1f;
     [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private GameObject _leaderboardText;
     [SerializeField] private RectTransform _rectAudioTransform;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private CanvasGroup _canvasAudioGroup;
     [SerializeField] private CanvasGroup _gameOverGroup;
     [SerializeField] private RectTransform _gameOverectTransform;
     [SerializeField] private bool _isPause = false;
-
+    
     public void RestartGame()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("TileMovemenent");
     }
 
+    public void TurnOffLeaderboard()
+    {
+        _leaderboardText.SetActive(false);
+    }
+
     public void LoadScene(String scene)
     {
         SceneManager.LoadScene(scene);
     }
-
-
+    
+    public void StartSound()
+    {
+      AudioManager.instance.SetSound(SOUND_TYPE.UI_START_GAME);  
+    }
+    
     public void PanelFadeIn()
     {
         TooglePause();
@@ -35,6 +45,15 @@ public class UImanager : MonoBehaviour
         _canvasGroup.DOFade(1, _fadeTime).SetUpdate(true);
     }
 
+    public void UI_SOUND()
+    {
+        AudioManager.instance.SetSound(SOUND_TYPE.UI_BUTTON_SFX);
+    }
+
+    public void ExitUISound()
+    {
+        AudioManager.instance.SetSound(SOUND_TYPE.UI_BUTTON_EXIT);
+    }
     public void GameOverFadeIn()
     {
         _gameOverGroup.alpha = 0f;

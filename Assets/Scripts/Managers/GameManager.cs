@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    
     public void SpawnObstacleNPowerUps(float rateSpawn, OBSTACLE_TYPE gameObjectToInstantiate)
     { 
         float mod = PlayerController.instance.Score % 50;

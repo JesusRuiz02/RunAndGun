@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
                 other.GetComponent<Balloon>().BreakHeavyBalloon();
             }
             DeactivateObject();
-           AudioManager.instance.PlaySFX(_popSFX);
+           AudioManager.instance.SetSound(SOUND_TYPE.POP_BALLLOON);
            other.GetComponent<Balloon>().CreateParticula();
         }
 
