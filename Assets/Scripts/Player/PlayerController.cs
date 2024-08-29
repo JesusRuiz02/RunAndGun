@@ -56,34 +56,50 @@ public class PlayerController : MonoBehaviour
     public void AddScore(float scoreToAdd)
     {
         score += scoreToAdd;
-        _scoreText.text = score.ToString();
+        _scoreText.text = score.ToString(); 
+        SpawnObstaclesAndPowerUps();
+        HandleAchievements();
+        HandleAchievements();
+    }
+
+    private void HandleAchievements()
+    {
+        if (PlayGamesPlatform.Instance == null)
+            return; 
+        if (PlayGamesPlatform.Instance.IsAuthenticated())
+        { 
+                if (score >= 100)
+                {
+                    PlayGamesManager.GetInstance().ReportAchievementProgress(PlayGamesManager.GetInstance().oneHundredAchievement,100f); 
+                }
+                if (score >= 0)
+                {
+                    PlayGamesManager.GetInstance().ReportAchievementProgress(PlayGamesManager.GetInstance().firstTimeAchievement,100f);
+                }
+                if (score >= 200)
+                {
+                    PlayGamesManager.GetInstance().ReportAchievementProgress(PlayGamesManager.GetInstance().twoHundredAchievement,100f);
+                }
+                if (score >= 300)
+                {
+                    PlayGamesManager.GetInstance().ReportAchievementProgress(PlayGamesManager.GetInstance().threeHundredAchievement,100f);
+                }
+                if (score >= 500)
+                { 
+                    PlayGamesManager.GetInstance().ReportAchievementProgress(PlayGamesManager.GetInstance().fiveHundredAchievement,100f);
+                } 
+        }
+    }
+
+    private void SpawnObstaclesAndPowerUps()
+    {
         if (score >= 100)
-        {
-            if (PlayGamesManager.GetInstance().connectedToGamePlay)
-            {
-                PlayGamesManager.GetInstance().OneHundredAchievement();
-            }
+        { 
             GameManager.instance.SpawnObstacleNPowerUps(16f,OBSTACLE_TYPE.HeavyBalloon);
         }
         if (score >= 0)
         {
-            if (PlayGamesManager.GetInstance().connectedToGamePlay)
-            {
-                PlayGamesManager.GetInstance().FirstTimeAchievement();
-            }
             GameManager.instance.SpawnObstacleNPowerUps(25f,OBSTACLE_TYPE.ShapeBalloon);
-        }
-        if (score >= 200 && PlayGamesManager.GetInstance().connectedToGamePlay)
-        {
-            PlayGamesManager.GetInstance().TwoHundredAchievement();
-        }
-        if (score >= 300 && PlayGamesManager.GetInstance().connectedToGamePlay)
-        {
-            PlayGamesManager.GetInstance().ThreeHundredAchievement();
-        }
-        if (score >= 500 && PlayGamesManager.GetInstance().connectedToGamePlay)
-        {
-            PlayGamesManager.GetInstance().FiveHundredAchievement();
         }
         GameManager.instance.SpawnObstacleNPowerUps(9f,OBSTACLE_TYPE.BalloonSpawner);
         GameManager.instance.SpawnObstacleNPowerUps(30f,OBSTACLE_TYPE.PowerUp);
@@ -128,20 +144,23 @@ public class PlayerController : MonoBehaviour
         {
             PlayerPrefs.SetFloat("highScore", score);
         }
-        if (PlayGamesManager.GetInstance().connectedToGamePlay)
-        {
-           PlayGamesManager.GetInstance().PerseveranceAchievement(); 
-        }
         _textScore.text = "Highscore : " + highScore;
         _textAccuracy.text = "Accuracy : " + _accuracy + "%";
-        AddScoreToLeaderBoard(leaderboardId, (int)score);
         _canvasPause.SetActive(false);
         Time.timeScale = 0;
+        if (PlayGamesPlatform.Instance != null)
+        {
+            if (PlayGamesPlatform.Instance.IsAuthenticated()) 
+                return;
+            _uImanager.TurnOffLeaderboard();
+            PlayGamesManager.GetInstance().ReportAchievementProgress(PlayGamesManager.GetInstance().perseveranceAchievement,1f);
+            AddScoreToLeaderBoard(leaderboardId, (int)score);
+        }
     }
     
-    public void AddScoreToLeaderBoard(string leaderboard, int points)
+    private void AddScoreToLeaderBoard(string leaderboard, int points)
     {
-        if (PlayGamesManager.GetInstance().connectedToGamePlay)
+        if (PlayGamesPlatform.Instance.IsAuthenticated())
         {
             Social.ReportScore(points, leaderboard, (bool success) => {
                 if (success)
@@ -153,7 +172,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-           this.leaderboard.text = "No connection";
+            _uImanager.TurnOffLeaderboard();
         }
     }
     private void LoadPlayerScore(string leaderboardId)

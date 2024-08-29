@@ -3,6 +3,7 @@ using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayGamesManager : MonoBehaviour
 {
@@ -13,12 +14,15 @@ public class PlayGamesManager : MonoBehaviour
     [HideInInspector] public string fiveHundredAchievement = "CgkIs5ii8MkUEAIQBw";
     [HideInInspector] public string perseveranceAchievement = "CgkIs5ii8MkUEAIQCQ";
     [HideInInspector] public string firstTimeAchievement = "CgkIs5ii8MkUEAIQBA";
+    public Sprite noConnection;
+    public Image leaderboardUI;
+    public Image achievementsUI;
     
     public static PlayGamesManager GetInstance()
     {
         return instance;
     }
-    public bool connectedToGamePlay;
+ 
     private void Awake()
     {
         if (instance == null)
@@ -30,12 +34,22 @@ public class PlayGamesManager : MonoBehaviour
         {
            Destroy(gameObject);
         }
+        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.Activate();
+        SignIn();
+    }
+
+    private void ConnectionCheck()
+    {
+        if (!PlayGamesPlatform.Instance.IsAuthenticated())
+        {
+            leaderboardUI.sprite = noConnection;
+            achievementsUI.sprite = noConnection;
+        }
     }
     void Start()
     {
-        SignIn();
-        PlayGamesPlatform.DebugLogEnabled = true;
-        PlayGamesPlatform.Activate();
+        ConnectionCheck();
     }
     public void SignIn()
     {
@@ -44,119 +58,68 @@ public class PlayGamesManager : MonoBehaviour
 
     public void ShowLeaderboard()
     {
-        if (!connectedToGamePlay) SignIn();
-        Social.ShowLeaderboardUI();
-    }
-
-    public void FirstTimeAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(firstTimeAchievement, 100f, (result) =>
+        if (!PlayGamesPlatform.Instance.IsAuthenticated())
+        {
+            Debug.unityLogger.Log("Debugging", "No se mostró el marcador porque no está autenticado.");
+            if (leaderboardUI != null)
             {
-                if (result)
-                {
-                    Debug.Log("progressReported");
-                }
-                else
-                {
-                    Debug.LogWarning("Failed to reported");
-                }
+                leaderboardUI.sprite = noConnection;
+            }
+            SignIn(); // Llamar a la autenticación nuevamente si es necesario
+        }
+        else
+        {
+            PlayGamesPlatform.Instance.ShowLeaderboardUI();
+            Debug.unityLogger.Log("Debugging", "Se mostró el marcador.");
+        }
+    }
+    
+    public void ReportAchievementProgress(string achievementId, float progress)
+    {
+        if (PlayGamesPlatform.Instance.IsAuthenticated())
+        {
+            PlayGamesPlatform.Instance.ReportProgress(achievementId, progress, (result) =>
+            {
+                Debug.unityLogger.Log("Debugging", result ? "Se reportó el logro correctamente." : "Error al reportar el logro.");
             });
+        }
+        else
+        {
+            Debug.unityLogger.Log("Debugging", "No está autenticado para reportar el logro.");
+        }
     }
     
-    
-    public void OneHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(oneHundredAchievement, 100f, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-    public void TwoHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(twoHundredAchievement, 100f, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-    
-    public void ThreeHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(threeHundredAchievement, 100f, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-    
-    public void FiveHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(fiveHundredAchievement, 100f, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-
-    public void PerseveranceAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(perseveranceAchievement, 1, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
 
     public void ShowAchievementUI()
     {
-        PlayGamesPlatform.Instance.ShowAchievementsUI();
+        if (!PlayGamesPlatform.Instance.IsAuthenticated())
+        {
+            Debug.unityLogger.Log("Debugging", "No se mostraron los logros porque no está autenticado.");
+            if (achievementsUI != null)
+            {
+                achievementsUI.sprite = noConnection;
+            }
+            SignIn(); // Intentar autenticarse nuevamente
+        }
+        else
+        {
+            PlayGamesPlatform.Instance.ShowAchievementsUI();
+            Debug.unityLogger.Log("Debugging", "Se mostraron los logros.");
+        }
     }
     
     
     internal void ProcessAuthentication(SignInStatus status) {
         if (status == SignInStatus.Success) {
-            // Continue with Play Games Services
-            string name = PlayGamesPlatform.Instance.GetUserDisplayName();
-            string id = PlayGamesPlatform.Instance.GetUserId();
-            string imgUrl = PlayGamesPlatform.Instance.GetUserImageUrl();
-            connectedToGamePlay = true;
+            Debug.unityLogger.Log("Debugging", "se conecto"); 
         } else
         {
-            connectedToGamePlay = false;
-            // Disable your integration with Play Games Services or show a login button
-            // to ask users to sign-in. Clicking it should call
-            // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
+            if (leaderboardUI != null && achievementsUI != null)
+            {
+                leaderboardUI.sprite = noConnection;
+                achievementsUI.sprite = noConnection;
+            }
+            Debug.unityLogger.Log("Debugging", "No se conecto"); 
         }
     }
    

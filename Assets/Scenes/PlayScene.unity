@@ -688,7 +688,9 @@ MonoBehaviour:
   fiveHundredAchievement: CgkIs5ii8MkUEAIQBw
   perseveranceAchievement: CgkIs5ii8MkUEAIQCQ
   firstTimeAchievement: CgkIs5ii8MkUEAIQBA
-  connectedToGamePlay: 0
+  noConnection: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  leaderboardUI: {fileID: 1649439962}
+  achievementsUI: {fileID: 736104897}
 --- !u!4 &465187372
 Transform:
   m_ObjectHideFlags: 0
@@ -1070,9 +1072,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1513645686}
-        m_TargetAssemblyTypeName: GAME_SERVICES_UI_MAIN_MENU, Assembly-CSharp
-        m_MethodName: ShowAchievements
+      - m_Target: {fileID: 424179680}
+        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
+        m_MethodName: UI_SOUND
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1082,9 +1084,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 424179680}
-        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
-        m_MethodName: UI_SOUND
+      - m_Target: {fileID: 1513645686}
+        m_TargetAssemblyTypeName: GAME_SERVICES_UI_MAIN_MENU, Assembly-CSharp
+        m_MethodName: ShowAchievements
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1114,7 +1116,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300006, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
