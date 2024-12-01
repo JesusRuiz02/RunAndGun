@@ -30,12 +30,9 @@ public class PlayGamesManager : MonoBehaviour
         {
            Destroy(gameObject);
         }
-    }
-    void Start()
-    {
-        SignIn();
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
+        SignIn();
     }
     public void SignIn()
     {
@@ -45,118 +42,41 @@ public class PlayGamesManager : MonoBehaviour
     public void ShowLeaderboard()
     {
         if (!connectedToGamePlay) SignIn();
-        Social.ShowLeaderboardUI();
-    }
-
-    public void FirstTimeAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(firstTimeAchievement, 100f, (result) =>
-            {
-                if (result)
-                {
-                    Debug.Log("progressReported");
-                }
-                else
-                {
-                    Debug.LogWarning("Failed to reported");
-                }
-            });
+        PlayGamesPlatform.Instance.ShowLeaderboardUI();
     }
     
     
-    public void OneHundredAchievement()
+    public void ReportAchievement(string achievementId, float progress)
     {
-        PlayGamesPlatform.Instance.ReportProgress(oneHundredAchievement, 100f, (result) =>
+        PlayGamesPlatform.Instance.ReportProgress(achievementId, progress, (result) =>
         {
             if (result)
             {
-                Debug.Log("progressReported");
+                Debug.Log($"Achievement {achievementId} progress reported");
             }
             else
             {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-    public void TwoHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(twoHundredAchievement, 100f, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
+                Debug.LogWarning($"Failed to report progress for {achievementId}");
             }
         });
     }
     
-    public void ThreeHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(threeHundredAchievement, 100f, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-    
-    public void FiveHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(fiveHundredAchievement, 100f, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-
-    public void PerseveranceAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(perseveranceAchievement, 1, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-
     public void ShowAchievementUI()
     {
-        PlayGamesPlatform.Instance.ShowAchievementsUI();
+        if (connectedToGamePlay)
+        {
+            PlayGamesPlatform.Instance.ShowAchievementsUI();
+           
+        }
     }
     
     
     internal void ProcessAuthentication(SignInStatus status) {
         if (status == SignInStatus.Success) {
-            // Continue with Play Games Services
-            string name = PlayGamesPlatform.Instance.GetUserDisplayName();
-            string id = PlayGamesPlatform.Instance.GetUserId();
-            string imgUrl = PlayGamesPlatform.Instance.GetUserImageUrl();
             connectedToGamePlay = true;
         } else
         {
             connectedToGamePlay = false;
-            // Disable your integration with Play Games Services or show a login button
-            // to ask users to sign-in. Clicking it should call
-            // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
         }
     }
    

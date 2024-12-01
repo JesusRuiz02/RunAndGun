@@ -51,45 +51,59 @@ public class PlayerController : MonoBehaviour
         AudioManager.instance.PlayMusic(_song);
         _healthController = gameObject.GetComponent<HealthController>();
     }
-    
 
-    public void AddScore(float scoreToAdd)
+    private void HandleAchievements()
     {
-        score += scoreToAdd;
-        _scoreText.text = score.ToString();
-        if (score >= 100)
-        {
-            if (PlayGamesManager.GetInstance().connectedToGamePlay)
-            {
-                PlayGamesManager.GetInstance().OneHundredAchievement();
-            }
-            GameManager.instance.SpawnObstacleNPowerUps(16f,OBSTACLE_TYPE.HeavyBalloon);
-        }
         if (score >= 0)
         {
-            if (PlayGamesManager.GetInstance().connectedToGamePlay)
-            {
-                PlayGamesManager.GetInstance().FirstTimeAchievement();
-            }
+            PlayGamesManager.GetInstance().ReportAchievement(PlayGamesManager.GetInstance().firstTimeAchievement,100f);
+        }
+        if (score >= 100)
+        {
+            PlayGamesManager.GetInstance().ReportAchievement(PlayGamesManager.GetInstance().oneHundredAchievement,100f);
+        }
+        if (score >= 200)
+        {
+            PlayGamesManager.GetInstance().ReportAchievement(PlayGamesManager.GetInstance().twoHundredAchievement,100f);
+        }
+        if (score >= 300 )
+        {
+            PlayGamesManager.GetInstance().ReportAchievement(PlayGamesManager.GetInstance().threeHundredAchievement,100f);
+        }
+
+        if (score >= 500)
+        {
+            PlayGamesManager.GetInstance().ReportAchievement(PlayGamesManager.GetInstance().fiveHundredAchievement,100f);
+        }
+        
+    }
+
+    private void SpawnObstaclesAndPowerUps()
+    {
+        if (score >= 0)
+        {
             GameManager.instance.SpawnObstacleNPowerUps(25f,OBSTACLE_TYPE.ShapeBalloon);
         }
-        if (score >= 200 && PlayGamesManager.GetInstance().connectedToGamePlay)
+        if (score >= 100)
         {
-            PlayGamesManager.GetInstance().TwoHundredAchievement();
-        }
-        if (score >= 300 && PlayGamesManager.GetInstance().connectedToGamePlay)
-        {
-            PlayGamesManager.GetInstance().ThreeHundredAchievement();
-        }
-        if (score >= 500 && PlayGamesManager.GetInstance().connectedToGamePlay)
-        {
-            PlayGamesManager.GetInstance().FiveHundredAchievement();
+            GameManager.instance.SpawnObstacleNPowerUps(16f,OBSTACLE_TYPE.HeavyBalloon);
         }
         GameManager.instance.SpawnObstacleNPowerUps(9f,OBSTACLE_TYPE.BalloonSpawner);
         GameManager.instance.SpawnObstacleNPowerUps(30f,OBSTACLE_TYPE.PowerUp);
         GameManager.instance.SpawnObstacleNPowerUps(40f, OBSTACLE_TYPE.HealPowerUp);
         GameManager.instance.SpawnObstacleNPowerUps(36f, OBSTACLE_TYPE.ExtraLifePowerUp);
         GameManager.instance.SpawnObstacleNPowerUps(38f, OBSTACLE_TYPE.Door);
+    }
+
+    public void AddScore(float scoreToAdd)
+    {
+        score += scoreToAdd;
+        _scoreText.text = score.ToString();
+        SpawnObstaclesAndPowerUps();
+        if (PlayGamesManager.GetInstance().connectedToGamePlay)
+        {
+            HandleAchievements();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -128,15 +142,15 @@ public class PlayerController : MonoBehaviour
         {
             PlayerPrefs.SetFloat("highScore", score);
         }
-        if (PlayGamesManager.GetInstance().connectedToGamePlay)
-        {
-           PlayGamesManager.GetInstance().PerseveranceAchievement(); 
-        }
         _textScore.text = "Highscore : " + highScore;
         _textAccuracy.text = "Accuracy : " + _accuracy + "%";
-        AddScoreToLeaderBoard(leaderboardId, (int)score);
         _canvasPause.SetActive(false);
         Time.timeScale = 0;
+        if (PlayGamesManager.GetInstance().connectedToGamePlay)
+        {
+            PlayGamesManager.GetInstance().ReportAchievement(PlayGamesManager.GetInstance().perseveranceAchievement,1f);
+            AddScoreToLeaderBoard(leaderboardId, (int)score);
+        }
     }
     
     public void AddScoreToLeaderBoard(string leaderboard, int points)
