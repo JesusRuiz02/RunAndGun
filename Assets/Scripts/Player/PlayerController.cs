@@ -124,6 +124,10 @@ public class PlayerController : MonoBehaviour
         float accuracy = (score / _shots ) * 100;
         double _accuracy = Math.Round(accuracy, 2);
         _accuracy = score == 0 ? 0 : _accuracy; //Para que la division no de infinito en caso de ser cero
+        if (MySqlConnection.GetInstance().userInfo.isLogin)
+        {
+            MySqlConnection.GetInstance().SendGameData((int)score,accuracy);
+        }
         if (highScore < score)
         {
             PlayerPrefs.SetFloat("highScore", score);
