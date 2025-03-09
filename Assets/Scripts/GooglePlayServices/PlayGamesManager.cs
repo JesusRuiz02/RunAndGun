@@ -33,9 +33,10 @@ public class PlayGamesManager : MonoBehaviour
     }
     void Start()
     {
-        SignIn();
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
+        SignIn();
+      
     }
     public void SignIn()
     {
@@ -45,84 +46,36 @@ public class PlayGamesManager : MonoBehaviour
     public void ShowLeaderboard()
     {
         if (!connectedToGamePlay) SignIn();
-        Social.ShowLeaderboardUI();
+        PlayGamesPlatform.Instance.ShowLeaderboardUI();
     }
+    
+    private void ReportAchievement(string achievementId)
+    {
+        if (!connectedToGamePlay)
+        {
+            Debug.LogWarning("User not signed in, cannot report achievement.");
+            return;
+        }
 
-    public void FirstTimeAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(firstTimeAchievement, 100f, (result) =>
-            {
-                if (result)
-                {
-                    Debug.Log("progressReported");
-                }
-                else
-                {
-                    Debug.LogWarning("Failed to reported");
-                }
-            });
-    }
-    
-    
-    public void OneHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(oneHundredAchievement, 100f, (result) =>
+        PlayGamesPlatform.Instance.ReportProgress(achievementId, 100f, (result) =>
         {
             if (result)
             {
-                Debug.Log("progressReported");
+                Debug.Log("Progress reported successfully");
             }
             else
             {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-    public void TwoHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(twoHundredAchievement, 100f, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-    
-    public void ThreeHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(threeHundredAchievement, 100f, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
-            }
-        });
-    }
-    
-    public void FiveHundredAchievement()
-    {
-        PlayGamesPlatform.Instance.ReportProgress(fiveHundredAchievement, 100f, (result) =>
-        {
-            if (result)
-            {
-                Debug.Log("progressReported");
-            }
-            else
-            {
-                Debug.LogWarning("Failed to reported");
+                Debug.LogWarning("Failed to report progress");
             }
         });
     }
 
+    public void FirstTimeAchievement() => ReportAchievement(firstTimeAchievement);
+    public void OneHundredAchievement() => ReportAchievement(oneHundredAchievement);
+    public void TwoHundredAchievement() => ReportAchievement(twoHundredAchievement);
+    public void ThreeHundredAchievement() => ReportAchievement(threeHundredAchievement);
+    public void FiveHundredAchievement() => ReportAchievement(fiveHundredAchievement);
+    
     public void PerseveranceAchievement()
     {
         PlayGamesPlatform.Instance.ReportProgress(perseveranceAchievement, 1, (result) =>
@@ -140,24 +93,24 @@ public class PlayGamesManager : MonoBehaviour
 
     public void ShowAchievementUI()
     {
+        if (!connectedToGamePlay) SignIn();
         PlayGamesPlatform.Instance.ShowAchievementsUI();
     }
     
     
-    internal void ProcessAuthentication(SignInStatus status) {
-        if (status == SignInStatus.Success) {
-            // Continue with Play Games Services
-            string name = PlayGamesPlatform.Instance.GetUserDisplayName();
-            string id = PlayGamesPlatform.Instance.GetUserId();
-            string imgUrl = PlayGamesPlatform.Instance.GetUserImageUrl();
-            connectedToGamePlay = true;
-        } else
+    internal void ProcessAuthentication(SignInStatus status)
+    {
+        if (status == SignInStatus.Success)
         {
+            Debug.Log("Google Play Games login successful.");
+            connectedToGamePlay = true;
+        }
+        else
+        {
+            Debug.LogWarning("Google Play Games login failed.");
             connectedToGamePlay = false;
-            // Disable your integration with Play Games Services or show a login button
-            // to ask users to sign-in. Clicking it should call
-            // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
         }
     }
+    
    
 }

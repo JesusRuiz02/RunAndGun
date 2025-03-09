@@ -1,12 +1,15 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class TilePool : MonoBehaviour
 {
     public static TilePool _Instance;
-    private TileType _nextTileToSpawn;
+    [SerializeField] private TileType _nextTileToSpawn;
     public TileType NextTileToSpawn => _nextTileToSpawn;
-    [SerializeField] private GameObject[] _tilesPrefab;
+    private bool isBridgeNextTile;
+   [SerializeField] private GameObject[] _tilesPrefab;
    [SerializeField] private List<GameObject> _pooledObjects = new List<GameObject>();
     public List<GameObject> PooledObjects => _pooledObjects;
     private int _amountToPool = 9;
@@ -19,31 +22,68 @@ public class TilePool : MonoBehaviour
             _Instance = this;
         }
     }
+    
 
-    public void ChangeNextTypeTileToPool(TileType type)
+    public void ChangeBridgeTile()
     {
-        _nextTileToSpawn = type;
+        isBridgeNextTile = true;
     }
+
+    public void ChangeNextTypeTileToPool()
+    {
+        TileType nextTile = default;
+        do
+        {
+            Random random = new Random();
+            var values = Enum.GetValues(typeof(TileType));
+            nextTile = (TileType)values.GetValue(random.Next(values.Length));
+            Debug.Log("nuevo tile pool");
+        }while(nextTile == NextTileToSpawn);
+        Debug.Log(nextTile);
+        _nextTileToSpawn = nextTile;
+    }
+    
     
     public GameObject GetPooledObjects(TileType type)
     {
-        for (int i = 0; i < _pooledObjects.Count; i++)
+
+        foreach (var objectTile in _pooledObjects)
         {
-            if (!_pooledObjects[i].activeInHierarchy)
+            if (!objectTile.activeInHierarchy)
             {
-                if (_pooledObjects[i].GetComponentInChildren<SpawnTile>().tileType == type )
+                var tile = objectTile.GetComponentInChildren<SpawnTile>();
+                if (tile.tileType == type)
                 {
-                    _pooledObjects[i].transform.position = _pooledObjects[i].GetComponentInChildren<SpawnTile>().SpawnPosition;
-                    _pooledObjects[i].SetActive(true);
-                    return _pooledObjects[i];
+                    if (isBridgeNextTile)
+                    {
+                        if (!tile.IsReturningBridge())
+                        {
+                            continue;
+                        }
+                        isBridgeNextTile = false;
+                    } 
+                    objectTile.transform.position = tile.SpawnPosition;
+                    objectTile.SetActive(true);
+                    return objectTile;
                 }
+                
             }
         }
+        
         for (int i = 0; i < _tilesPrefab.Length; i++)
         {
-            if (_tilesPrefab[i].GetComponentInChildren<SpawnTile>().tileType == type)
+            SpawnTile tile = _tilesPrefab[i].GetComponentInChildren<SpawnTile>();
+            if (tile.tileType == type)
             {
-                GameObject currentTile = Instantiate(_tilesPrefab[i], _tilesPrefab[i].GetComponentInChildren<SpawnTile>().SpawnPosition, _tilesPrefab[i].transform.rotation);
+                if (isBridgeNextTile)
+                {
+                    if (!tile.IsReturningBridge())
+                    {
+                        continue;
+                    }
+                    isBridgeNextTile = false;
+                } 
+                GameObject currentTile = Instantiate(_tilesPrefab[i], tile.SpawnPosition, _tilesPrefab[i].transform.rotation);
                 _pooledObjects.Add(currentTile);
                 return currentTile;
             }

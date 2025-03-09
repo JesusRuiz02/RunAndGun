@@ -3058,7 +3058,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465187370}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 701ae4c5360f1134e8540739f3dfede1, type: 3}
   m_Name: 
@@ -4857,9 +4857,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 424179682}
-        m_TargetAssemblyTypeName: MainMenuDataBase, Assembly-CSharp
-        m_MethodName: StartAccuracyBoard
+      - m_Target: {fileID: 1513645686}
+        m_TargetAssemblyTypeName: GAME_SERVICES_UI_MAIN_MENU, Assembly-CSharp
+        m_MethodName: ShowAchievements
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5211,15 +5211,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7130007261999875980, guid: 2288c7cf158b5ec4585fb5a0c170c0f1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.86
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7130007261999875980, guid: 2288c7cf158b5ec4585fb5a0c170c0f1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.86
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7130007261999875980, guid: 2288c7cf158b5ec4585fb5a0c170c0f1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.86
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7130007261999875980, guid: 2288c7cf158b5ec4585fb5a0c170c0f1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5259,6 +5259,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7130007261999875980, guid: 2288c7cf158b5ec4585fb5a0c170c0f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130007261999875980, guid: 2288c7cf158b5ec4585fb5a0c170c0f1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7592736604520433434, guid: 2288c7cf158b5ec4585fb5a0c170c0f1, type: 3}
@@ -10777,9 +10781,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 424179682}
-        m_TargetAssemblyTypeName: MainMenuDataBase, Assembly-CSharp
-        m_MethodName: StartLeaderboard
+      - m_Target: {fileID: 1513645686}
+        m_TargetAssemblyTypeName: GAME_SERVICES_UI_MAIN_MENU, Assembly-CSharp
+        m_MethodName: ShowLeaderboard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13246,7 +13250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2125939720
 RectTransform:
   m_ObjectHideFlags: 0

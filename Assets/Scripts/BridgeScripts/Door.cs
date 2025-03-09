@@ -33,14 +33,15 @@ public class Door : MonoBehaviour
     }
     
     
+    
     private void OnEnable()
     {
+        _animatorParent.Play("IDLE");
         foreach (var keys in _keysList)
         {
            keys.SetActive(true);  
         }
         _isOpened = false;
-        _animatorParent.Play("Regresar");
     }
 
    

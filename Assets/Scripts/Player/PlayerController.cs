@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private int scoreToReset = 0;
     public TextMeshProUGUI leaderboard;
     [SerializeField] private UImanager _uImanager;
     public static PlayerController instance;
@@ -45,6 +46,16 @@ public class PlayerController : MonoBehaviour
         _scoreText.text = score.ToString();
     }
 
+    public int GetScoreToReset()
+    {
+        return scoreToReset;
+    }
+
+    public void StartResetScore()
+    {
+        scoreToReset = 0;
+    }
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -56,6 +67,7 @@ public class PlayerController : MonoBehaviour
     public void AddScore(float scoreToAdd)
     {
         score += scoreToAdd;
+        scoreToReset += (int)scoreToAdd;
         _scoreText.text = score.ToString();
         if (score >= 100)
         {
@@ -124,10 +136,10 @@ public class PlayerController : MonoBehaviour
         float accuracy = (score / _shots ) * 100;
         double _accuracy = Math.Round(accuracy, 2);
         _accuracy = score == 0 ? 0 : _accuracy; //Para que la division no de infinito en caso de ser cero
-        if (MySqlConnection.GetInstance().userInfo.isLogin)
+       /* if (MySqlConnection.GetInstance().userInfo.isLogin)
         {
             MySqlConnection.GetInstance().SendGameData((int)score,accuracy);
-        }
+        }*/
         if (highScore < score)
         {
             PlayerPrefs.SetFloat("highScore", score);
@@ -208,7 +220,7 @@ public class PlayerController : MonoBehaviour
         _shots++;
         Vector3 forceDirection = transform.forward;
     
-        forceDirection = (Targetposition - transform.position).normalized;
+        forceDirection = (Targetposition - transform.position + new Vector3(0, 0.3f,-1)).normalized;
 
         Vector3 forceToAdd = forceDirection * _throwForce + transform.up * _throwUpForce;
 

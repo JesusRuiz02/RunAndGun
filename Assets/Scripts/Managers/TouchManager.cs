@@ -50,14 +50,14 @@ public class TouchManager : MonoBehaviour
     
     if (projectile != null)
     {
-      projectile.transform.position = _player.transform.position;
+      projectile.transform.position = _player.transform.position + new Vector3(0, 0.3f, -1);
       projectile.SetActive(true);
       PlayerController.instance.Shoot(Targetposition, projectile);
     }
     else
     {      
       GameObject provBullet = ObjectPool.instance.CreateMoreBullets();
-      provBullet.transform.position = _player.transform.position;
+      provBullet.transform.position = _player.transform.position + new Vector3(0, 0.3f, -1);
       provBullet.SetActive(true);
       PlayerController.instance.Shoot(Targetposition, provBullet);
     }

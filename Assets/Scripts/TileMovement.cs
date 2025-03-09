@@ -9,10 +9,22 @@ public class TileMovement : MonoBehaviour
     {
         Tile.Translate(0,0, -_speed * Time.deltaTime);
 
-        if (Tile.position.z <= -20f)
+        if (Tile.position.z <= -15f)
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); 
+            TilePool._Instance.GetPooledObjects(TilePool._Instance.NextTileToSpawn);
         }
         
     }
+
+   
+    
+}
+
+public enum TileType
+{
+    NormalTile,
+    DesertTile,
+    TrainTile,
+    SnowTile,
 }
