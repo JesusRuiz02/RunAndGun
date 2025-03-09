@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
         _shots++;
         Vector3 forceDirection = transform.forward;
     
-        forceDirection = (Targetposition - transform.position + new Vector3(0, 0.3f,-1)).normalized;
+        forceDirection = (Targetposition - transform.position + new Vector3(0, 0.25f,-1)).normalized;
 
         Vector3 forceToAdd = forceDirection * _throwForce + transform.up * _throwUpForce;
 
