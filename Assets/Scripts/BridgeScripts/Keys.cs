@@ -13,9 +13,10 @@ public class Keys : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             gameObject.SetActive(false);
+            _door.DoorCheck();
             GameObject particle = Instantiate(_explosionParticle, _explosionTransform.position, Quaternion.identity);
             Destroy(particle, 1f);
-            _door.DoorCheck();
+           
         }
     }
 }

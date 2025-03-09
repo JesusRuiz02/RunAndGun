@@ -53,6 +53,10 @@ PrefabInstance:
       value: Globo_Corazon_2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 060ee30255e13214cb318414cab2c2ee, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 060ee30255e13214cb318414cab2c2ee, type: 3}
       propertyPath: m_TagString
       value: Heal
       objectReference: {fileID: 0}

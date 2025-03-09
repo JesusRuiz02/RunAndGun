@@ -2,14 +2,20 @@ using System;
 using System.Collections;
 using TMPro;
 using DG.Tweening;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine.SocialPlatforms;
 using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class PlayerController : MonoBehaviour
 {
+    private int scoreToReset = 0;
+    public TextMeshProUGUI leaderboard;
     [SerializeField] private UImanager _uImanager;
     public static PlayerController instance;
+    private string leaderboardId = "CgkIs5ii8MkUEAIQAg";
     [SerializeField] private GameObject _invincibleCanvas;
     [SerializeField]  private GameObject _canvasPause;
     [SerializeField] private AudioClip BulletSfx;
@@ -40,6 +46,16 @@ public class PlayerController : MonoBehaviour
         _scoreText.text = score.ToString();
     }
 
+    public int GetScoreToReset()
+    {
+        return scoreToReset;
+    }
+
+    public void StartResetScore()
+    {
+        scoreToReset = 0;
+    }
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -51,14 +67,35 @@ public class PlayerController : MonoBehaviour
     public void AddScore(float scoreToAdd)
     {
         score += scoreToAdd;
+        scoreToReset += (int)scoreToAdd;
         _scoreText.text = score.ToString();
         if (score >= 100)
         {
+            if (PlayGamesManager.GetInstance().connectedToGamePlay)
+            {
+                PlayGamesManager.GetInstance().OneHundredAchievement();
+            }
             GameManager.instance.SpawnObstacleNPowerUps(16f,OBSTACLE_TYPE.HeavyBalloon);
         }
         if (score >= 0)
         {
+            if (PlayGamesManager.GetInstance().connectedToGamePlay)
+            {
+                PlayGamesManager.GetInstance().FirstTimeAchievement();
+            }
             GameManager.instance.SpawnObstacleNPowerUps(25f,OBSTACLE_TYPE.ShapeBalloon);
+        }
+        if (score >= 200 && PlayGamesManager.GetInstance().connectedToGamePlay)
+        {
+            PlayGamesManager.GetInstance().TwoHundredAchievement();
+        }
+        if (score >= 300 && PlayGamesManager.GetInstance().connectedToGamePlay)
+        {
+            PlayGamesManager.GetInstance().ThreeHundredAchievement();
+        }
+        if (score >= 500 && PlayGamesManager.GetInstance().connectedToGamePlay)
+        {
+            PlayGamesManager.GetInstance().FiveHundredAchievement();
         }
         GameManager.instance.SpawnObstacleNPowerUps(9f,OBSTACLE_TYPE.BalloonSpawner);
         GameManager.instance.SpawnObstacleNPowerUps(30f,OBSTACLE_TYPE.PowerUp);
@@ -72,7 +109,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Balloon"))
         {
             Health();
-            AudioManager.instance.PlaySFX(_popSfx);
+            AudioManager.instance.SetSound(SOUND_TYPE.POP_BALLLOON);
             other.gameObject.SetActive(false);
             Camera.main.DOShakePosition(0.25f, new Vector3(0, 1, 0), 80, 90f, true);
         }
@@ -83,7 +120,7 @@ public class PlayerController : MonoBehaviour
                 other.transform.parent.gameObject.SetActive(false); 
                 Camera.main.transform.DOMoveY(0.6f, 0.7f, true).SetEase(Ease.OutElastic).SetUpdate(true);
                 Camera.main.transform.DORotate(new Vector3(-90, 0, 0), 0.4f).SetUpdate(true).SetEase(Ease.Flash);
-                AudioManager.instance.PlaySFX(_WallCrash);
+                AudioManager.instance.SetSound(SOUND_TYPE.WALL_CRASHED);
                 Camera.main.DOShakePosition(0.6f, new Vector3(2, 0, 0), 80, 90f, true).SetDelay(0.5f).SetUpdate(true);
                 GameOver(); 
             }
@@ -99,14 +136,75 @@ public class PlayerController : MonoBehaviour
         float accuracy = (score / _shots ) * 100;
         double _accuracy = Math.Round(accuracy, 2);
         _accuracy = score == 0 ? 0 : _accuracy; //Para que la division no de infinito en caso de ser cero
+       /* if (MySqlConnection.GetInstance().userInfo.isLogin)
+        {
+            MySqlConnection.GetInstance().SendGameData((int)score,accuracy);
+        }*/
         if (highScore < score)
         {
             PlayerPrefs.SetFloat("highScore", score);
         }
+        if (PlayGamesManager.GetInstance().connectedToGamePlay)
+        {
+           PlayGamesManager.GetInstance().PerseveranceAchievement(); 
+        }
         _textScore.text = "Highscore : " + highScore;
         _textAccuracy.text = "Accuracy : " + _accuracy + "%";
+        AddScoreToLeaderBoard(leaderboardId, (int)score);
         _canvasPause.SetActive(false);
         Time.timeScale = 0;
+    }
+    
+    public void AddScoreToLeaderBoard(string leaderboard, int points)
+    {
+        if (PlayGamesManager.GetInstance().connectedToGamePlay)
+        {
+            Social.ReportScore(points, leaderboard, (bool success) => {
+                if (success)
+                {
+                    LoadPlayerScore(leaderboardId);
+                }
+                // handle success or failure
+            });
+        }
+        else
+        {
+           this.leaderboard.text = "No connection";
+        }
+    }
+    private void LoadPlayerScore(string leaderboardId)
+    {
+        PlayGamesPlatform.Instance.LoadScores(
+            leaderboardId,
+            LeaderboardStart.PlayerCentered,
+            1,
+            LeaderboardCollection.Public,
+            LeaderboardTimeSpan.AllTime,
+            (LeaderboardScoreData data) =>
+            {
+                if (data.Valid)
+                {
+                    IScore playerScore = data.PlayerScore;
+                    if (playerScore != null)
+                    {
+                        leaderboard.text = "Rank: " + playerScore.rank;
+                        if (playerScore.rank == -1)
+                        {
+                            _uImanager.TurnOffLeaderboard();
+                        }
+                    }
+                    else
+                    {
+                        _uImanager.TurnOffLeaderboard();
+                        leaderboard.text = "Player not found";
+                    }
+                }
+                else
+                {
+                    _uImanager.TurnOffLeaderboard();
+                    leaderboard.text = "No connection";
+                }
+            });
     }
 
     public void Health()
@@ -122,13 +220,13 @@ public class PlayerController : MonoBehaviour
         _shots++;
         Vector3 forceDirection = transform.forward;
     
-        forceDirection = (Targetposition - transform.position).normalized;
+        forceDirection = (Targetposition - transform.position + new Vector3(0, 0.25f,-1)).normalized;
 
         Vector3 forceToAdd = forceDirection * _throwForce + transform.up * _throwUpForce;
 
         projectile.GetComponent<Rigidbody>().AddForce(forceToAdd, ForceMode.Impulse);
 
-        AudioManager.instance.PlaySFX(BulletSfx);
+        AudioManager.instance.SetSound(SOUND_TYPE.DART_THROWED);
     }
 
     public void CallCoroutine()

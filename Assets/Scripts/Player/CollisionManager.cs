@@ -12,7 +12,7 @@ public class CollisionManager : MonoBehaviour
         if (other.CompareTag("Balloon"))
         {
             PlayerController.instance.Health();
-            AudioManager.instance.PlaySFX(_popSfx);
+            AudioManager.instance.SetSound(SOUND_TYPE.POP_BALLLOON);
             other.gameObject.SetActive(false);
             Camera.main.DOShakePosition(0.25f, 1, 80, 90f, true);
         }

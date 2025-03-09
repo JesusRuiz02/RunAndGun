@@ -212,6 +212,10 @@ PrefabInstance:
       value: MobileBalloon
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4576f7674f45633498463758d15bd9b3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4576f7674f45633498463758d15bd9b3, type: 3}
       propertyPath: m_TagString
       value: Balloon
       objectReference: {fileID: 0}

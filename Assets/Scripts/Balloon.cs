@@ -25,6 +25,11 @@ public class Balloon : MonoBehaviour
 
     private void Update()
     {
+        if (transform.position.z <= -35)
+        {
+            gameObject.SetActive(false);
+        }
+        
         if (_Obstacle_Type != OBSTACLE_TYPE.Door)
         {
             _newPosition = transform.position;
