@@ -174,7 +174,7 @@ MonoBehaviour:
   _speed: 8
   _newPosition: {x: 0, y: 0, z: 0}
   _player: {fileID: 0}
-  _particleExplosion: {fileID: 0}
+  _particleExplosion: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
   BalloonExplosionTransform: []
   _Obstacle_Type: 8
 --- !u!1 &5728054279157935512 stripped
@@ -244,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.45
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
       propertyPath: m_LocalPosition.z
@@ -296,31 +296,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4772498368517037068}
+      addedObject: {fileID: 6618348463969334036}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6618348463969334036}
+      addedObject: {fileID: 4819804054117336776}
   m_SourcePrefab: {fileID: 100100000, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
 --- !u!1 &1399685834183456148 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
   m_PrefabInstance: {fileID: 2282699424589908165}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4772498368517037068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399685834183456148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68f8c9aca903ab5409d6382433c173bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _door: {fileID: 73864007147514604}
-  _explosionParticle: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
-  _explosionTransform: {fileID: 6839328419063316973}
 --- !u!135 &6618348463969334036
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -342,6 +327,42 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.0020125
   m_Center: {x: -0, y: 1.817502, z: -0.4}
+--- !u!114 &4819804054117336776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399685834183456148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc77ac7a74514044aa540ea67ec14d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _door: {fileID: 73864007147514604}
+  valuesToChangeBehaviour:
+  - doorBehaviour: 0
+    inferiorLimitToChangeBehaviour: 0
+    superiorLimitToChangeBehaviour: 100
+    initialPhase: 1
+    lastPhase: 0
+  - doorBehaviour: 1
+    inferiorLimitToChangeBehaviour: 100
+    superiorLimitToChangeBehaviour: 300
+    initialPhase: 0
+    lastPhase: 0
+  - doorBehaviour: 2
+    inferiorLimitToChangeBehaviour: 300
+    superiorLimitToChangeBehaviour: 0
+    initialPhase: 0
+    lastPhase: 1
+  _explosionParticle: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
+  _explosionTransform: {fileID: 1740498822868954926}
+  _doorAnimator: {fileID: 7241884870269321181}
+  _maxLimitX: 5.9
+  _maxLimitY: 5.7
+  _minLimitY: 1.2
+  _minLimitX: -5.9
 --- !u!4 &1740498822868954926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f15286d6899aca2449a33d342bb586ef, type: 3}

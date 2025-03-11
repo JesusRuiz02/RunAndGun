@@ -20,7 +20,7 @@ public class Balloon : MonoBehaviour
     {
         _renderer = GetComponent<Renderer>();
         _player = Camera.main.transform;
-        _speed += PlayerController.instance.Score / 5 ;
+        _speed += PlayerController.instance.Score / 10 ;
     }
 
     private void Update()

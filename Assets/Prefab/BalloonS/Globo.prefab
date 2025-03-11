@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAttack: 0
-  _speed: 10
+  _speed: 15
   _newPosition: {x: 0, y: 0, z: 0}
   _player: {fileID: 0}
   _particleExplosion: {fileID: 8226479634739061045, guid: a8d797e85c363844ba0f8c15c6df87b0, type: 3}

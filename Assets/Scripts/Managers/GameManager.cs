@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
             PlayerController.instance.StartResetScore();
             TilePool._Instance.ChangeNextTypeTileToPool();
         }
-        float mod = PlayerController.instance.Score % 50;
+        float mod = PlayerController.instance.Score % 75;
         
         bool isScoreMultipleOf = mod == 0;
         if (isScoreMultipleOf)
