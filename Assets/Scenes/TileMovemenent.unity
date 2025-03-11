@@ -1024,6 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _balloonPrefab:
   - {fileID: 6712486645651108101, guid: 50ef3deccd9808e4682edb72ed257c37, type: 3}
+  - {fileID: 1784446663595994858, guid: 0f6c946959b8e3645a2b77ff712cd19f, type: 3}
   - {fileID: 3354504356320191720, guid: b830706d155c2ee4b958821a43d223dc, type: 3}
   - {fileID: 2868615693406469197, guid: 4a4853e81bea44a4d81c9353ac04bddb, type: 3}
   - {fileID: 7854779025027821354, guid: 9164867e9f2073348a7f49b47119aaa9, type: 3}
@@ -1031,7 +1032,6 @@ MonoBehaviour:
   - {fileID: 2079544052306598869, guid: e391610a67c81f049adeedbe9bef7ba9, type: 3}
   - {fileID: 1839795300989914172, guid: f1d056a097dec30438b3435a56fd3f0d, type: 3}
   - {fileID: 453567296149671385, guid: acc417e1f5bc36c418a10ff7b3b3b53a, type: 3}
-  - {fileID: 1784446663595994858, guid: 0f6c946959b8e3645a2b77ff712cd19f, type: 3}
   _ballonSpeedRate: 2
 --- !u!1001 &388825062
 PrefabInstance:
@@ -3502,7 +3502,6 @@ MonoBehaviour:
   - {fileID: 3189442137521289883, guid: c1cb7c485fa5027419d40ca3f80438ba, type: 3}
   - {fileID: 3355808968751111565, guid: 4b5883d1c67a20148b59672834ec8fa3, type: 3}
   - {fileID: 5804146494174481585, guid: 412e89069fe19d84ea4a9f20e8bfb232, type: 3}
-  - {fileID: 3843318824834182530, guid: 5a4b058d7e0323944bdf3a021b7df191, type: 3}
   - {fileID: 3843318824834182530, guid: 5a4b058d7e0323944bdf3a021b7df191, type: 3}
   - {fileID: 3189442137521289883, guid: 00add35ce9cc34940824936812b82043, type: 3}
   - {fileID: 3189442137521289883, guid: aa54745b77daeaa4197a931eabdd8b6b, type: 3}

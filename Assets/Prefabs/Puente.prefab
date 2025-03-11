@@ -1422,31 +1422,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2904211845640371137}
+      addedObject: {fileID: 1066380110519645371}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1066380110519645371}
+      addedObject: {fileID: 5969393551776130214}
   m_SourcePrefab: {fileID: 100100000, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
 --- !u!1 &3822482140713766718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
   m_PrefabInstance: {fileID: 4165062818058072687}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2904211845640371137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3822482140713766718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68f8c9aca903ab5409d6382433c173bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _door: {fileID: 3147478417562580978}
-  _explosionParticle: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
-  _explosionTransform: {fileID: 8661788997750602347}
 --- !u!65 &1066380110519645371
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1468,6 +1453,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9501371, y: 1.9724218, z: 0.25303915}
   m_Center: {x: 0.02266692, y: 1.794195, z: -0.011613719}
+--- !u!114 &5969393551776130214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822482140713766718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f717468597340445a60994e58905516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _door: {fileID: 3147478417562580978}
+  valuesToChangeBehaviour:
+  - doorBehaviour: 0
+    inferiorLimitToChangeBehaviour: 0
+    superiorLimitToChangeBehaviour: 200
+    initialPhase: 1
+    lastPhase: 0
+  - doorBehaviour: 1
+    inferiorLimitToChangeBehaviour: 200
+    superiorLimitToChangeBehaviour: 0
+    initialPhase: 0
+    lastPhase: 0
+  - doorBehaviour: 2
+    inferiorLimitToChangeBehaviour: 500
+    superiorLimitToChangeBehaviour: 0
+    initialPhase: 0
+    lastPhase: 1
+  _explosionParticle: {fileID: 8226479634739061045, guid: a8d797e85c363844ba0f8c15c6df87b0, type: 3}
+  _explosionTransform: {fileID: 4487836950143997316}
+  _doorAnimator: {fileID: 4734794173609934737}
+  _maxLimitY: 10
+  _minLimitY: 0
 --- !u!4 &4487836950143997316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
@@ -1914,10 +1933,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2387783971557866511}
+      addedObject: {fileID: 6147600625194929710}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6147600625194929710}
+      addedObject: {fileID: 8066826460011233939}
   m_SourcePrefab: {fileID: 100100000, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
 --- !u!4 &7124925504782407014 stripped
 Transform:
@@ -1929,21 +1948,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f15286d6899aca2449a33d342bb586ef, type: 3}
   m_PrefabInstance: {fileID: 7307768253941576333}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2387783971557866511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7614181054636445660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68f8c9aca903ab5409d6382433c173bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _door: {fileID: 3147478417562580978}
-  _explosionParticle: {fileID: 4509463883714148233, guid: d11def565c7660d4eaa476f1c0fa7bb8, type: 3}
-  _explosionTransform: {fileID: 6426008915043116002}
 --- !u!65 &6147600625194929710
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1965,6 +1969,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9501371, y: 1.9724218, z: 0.25303915}
   m_Center: {x: 0.02266692, y: 1.794195, z: -0.011613719}
+--- !u!114 &8066826460011233939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614181054636445660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f717468597340445a60994e58905516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _door: {fileID: 3147478417562580978}
+  valuesToChangeBehaviour:
+  - doorBehaviour: 0
+    inferiorLimitToChangeBehaviour: 0
+    superiorLimitToChangeBehaviour: 200
+    initialPhase: 1
+    lastPhase: 0
+  - doorBehaviour: 1
+    inferiorLimitToChangeBehaviour: 200
+    superiorLimitToChangeBehaviour: 0
+    initialPhase: 0
+    lastPhase: 0
+  - doorBehaviour: 2
+    inferiorLimitToChangeBehaviour: 500
+    superiorLimitToChangeBehaviour: 0
+    initialPhase: 0
+    lastPhase: 1
+  _explosionParticle: {fileID: 8226479634739061045, guid: a8d797e85c363844ba0f8c15c6df87b0, type: 3}
+  _explosionTransform: {fileID: 7124925504782407014}
+  _doorAnimator: {fileID: 4734794173609934737}
+  _maxLimitY: 10
+  _minLimitY: 0
 --- !u!1001 &8964248373012479417
 PrefabInstance:
   m_ObjectHideFlags: 0
