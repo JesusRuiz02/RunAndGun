@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class TouchManager : MonoBehaviour
 {
   [SerializeField] private GameObject _player;
-  [SerializeField] private GameObject _bullets;
   private PlayerInput _playerInput;
   [SerializeField] private LayerMask _shotLayerMask;
   [CanBeNull] private InputAction _touchPosition;
@@ -30,13 +29,13 @@ public class TouchManager : MonoBehaviour
 
   private void TouchPressed(InputAction.CallbackContext context)
   {
-    if (Time.timeScale == 1)
+    if (Time.timeScale == 1 )
     {
       Vector3 position = _touchPosition.ReadValue<Vector2>();
       position.z = _player.transform.position.z;
       RaycastHit hit;
       Ray ray = Camera.main.ScreenPointToRay(position);
-      if (Physics.Raycast(ray, out hit))
+      if (Physics.Raycast(ray, out hit, Mathf.Infinity, _shotLayerMask))
       {
         Debug.DrawLine(ray.origin, hit.point, Color.red);
         CheckMag(hit.point);

@@ -37,11 +37,12 @@ public class TilePool : MonoBehaviour
             Random random = new Random();
             var values = Enum.GetValues(typeof(TileType));
             nextTile = (TileType)values.GetValue(random.Next(values.Length));
-            Debug.Log("nuevo tile pool");
         }while(nextTile == NextTileToSpawn);
-        Debug.Log(nextTile);
+        SkyboxManager.GetInstance.SwitchSkybox((nextTile,1));
         _nextTileToSpawn = nextTile;
     }
+    
+    
     
     
     public GameObject GetPooledObjects(TileType type)
