@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    
     public void SpawnObstacleNPowerUps(float rateSpawn, OBSTACLE_TYPE gameObjectToInstantiate)
     { 
         if ( PlayerController.instance.GetScoreToReset() >= 100)
