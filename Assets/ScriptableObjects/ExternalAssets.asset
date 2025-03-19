@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 817da2dbb8061f4449945d34f0ee4e6f, type: 3}
+  m_Name: ExternalAssets
+  m_EditorClassIdentifier: 
+  _skins:
+  - skinId: 1
+    isUnlocked: 1
+    skinName: Basic Dart
+    gameObject: {fileID: 8596104900386471847, guid: 870f764c3701854458f710b521f6efe3, type: 3}
+    isActive: 1
+    price: 50
+  _materials:
+  - skinID: 0
+    material: {fileID: 2100000, guid: 8ec94ce36d77b3049974740867e7740d, type: 2}
+  - skinID: 1
+    material: {fileID: 2100000, guid: 8a1df62abd1f2c846891924358204e00, type: 2}
