@@ -12,33 +12,8 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Balloon"))
         {
-            if (other.GetComponent<Balloon>()._Obstacle_Type == OBSTACLE_TYPE.BalloonSpawner)
-            {
-                PlayerController.instance.AddScore(2);
-                other.GetComponent<Balloon>().BalloonExplosion();
-                other.gameObject.SetActive(false);
-            }
-            if (other.GetComponent<Balloon>()._Obstacle_Type == OBSTACLE_TYPE.ShapeBalloon)
-            {
-                PlayerController.instance.AddScore(1);
-                other.GetComponent<Balloon>().MakeExplosionShape();
-                other.gameObject.SetActive(false);
-            }
-            if (other.GetComponent<Balloon>()._Obstacle_Type == OBSTACLE_TYPE.BalloonMobile)
-            {
-                PlayerController.instance.AddScore(1);
-                other.gameObject.SetActive(false);
-            }
-            else if (other.GetComponent<Balloon>()._Obstacle_Type == OBSTACLE_TYPE.Balloon )
-            {
-                PlayerController.instance.AddScore(1);
-                other.gameObject.SetActive(false);
-            }
-            else if (other.GetComponent<Balloon>()._Obstacle_Type == OBSTACLE_TYPE.HeavyBalloon )
-            {
-                other.GetComponent<Balloon>().BreakHeavyBalloon();
-            }
-            DeactivateObject();
+           other.GetComponent<Balloon>().Pop();
+           DeactivateObject();
            AudioManager.instance.SetSound(SOUND_TYPE.POP_BALLLOON);
            other.GetComponent<Balloon>().CreateParticula();
         }

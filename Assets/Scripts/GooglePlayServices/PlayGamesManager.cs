@@ -45,7 +45,7 @@ public class PlayGamesManager : MonoBehaviour
 
     public void ShowLeaderboard()
     {
-        if (!connectedToGamePlay) SignIn();
+        if (!connectedToGamePlay) return;
         PlayGamesPlatform.Instance.ShowLeaderboardUI();
     }
     
@@ -93,7 +93,7 @@ public class PlayGamesManager : MonoBehaviour
 
     public void ShowAchievementUI()
     {
-        if (!connectedToGamePlay) SignIn();
+        if (!connectedToGamePlay) return;
         PlayGamesPlatform.Instance.ShowAchievementsUI();
     }
     
