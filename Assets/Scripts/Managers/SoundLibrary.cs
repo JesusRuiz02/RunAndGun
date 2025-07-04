@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SoundLibrary", menuName = "Scriptables/SoundLibrary", order = 1)]
+[CreateAssetMenu(fileName = "SoundLibrary", menuName = "ScriptableObjects/SoundLibrary", order = 1)]
 public class SoundLibrary : ScriptableObject
 {
     [SerializeField] SoundArchive[] soundArchives;

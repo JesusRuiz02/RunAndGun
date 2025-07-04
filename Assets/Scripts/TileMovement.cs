@@ -5,6 +5,7 @@ public class TileMovement : MonoBehaviour
 {
     [SerializeField] private Transform Tile = default;
     [SerializeField] private float _speed = default;
+   
     public void Update()
     {
         Tile.Translate(0,0, -_speed * Time.deltaTime);
@@ -23,6 +24,7 @@ public enum TileType
 {
     NormalTile,
     DesertTile,
-    TrainTile,
+    SpaceTile,
+    CityTile,
     SnowTile,
 }

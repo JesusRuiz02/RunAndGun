@@ -56,10 +56,10 @@ public class Keys : MonoBehaviour
 
     private void OnEnable()
     {
-        doorBehaviour = valuesToChangeBehaviour
+      /*  doorBehaviour = valuesToChangeBehaviour
             .Select(b => b.ReturnKeysBehaviour((int)PlayerController.instance.Score)) 
             .FirstOrDefault(b => b.HasValue) ?? DoorBehaviour.PHASE_1;
-        ChangeBehaviour();
+        ChangeBehaviour();*/
     }
 }
 
