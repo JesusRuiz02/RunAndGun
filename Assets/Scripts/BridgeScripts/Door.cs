@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
 {
     private Animator _animatorParent;
     private bool _isOpened;
+    public Collider[] doorCollider;
     public bool IsOpened => _isOpened;
     [SerializeField] private String _triggerString = "Open";
     [SerializeField] private List<GameObject> _keysList = new List<GameObject>();
@@ -27,7 +28,10 @@ public class Door : MonoBehaviour
         if (keysClose == 0)
         {
             _animatorParent.SetTrigger(_triggerString);
-            _isOpened = true;
+            foreach (var doorsColliders in doorCollider)
+            {
+               doorsColliders.enabled = false;
+            }
         }
       
     }
@@ -42,6 +46,10 @@ public class Door : MonoBehaviour
            keys.SetActive(true);  
         }
         _isOpened = false;
+        foreach (var doorsColliders in doorCollider)
+        {
+            doorsColliders.enabled = true;
+        }
     }
 
    

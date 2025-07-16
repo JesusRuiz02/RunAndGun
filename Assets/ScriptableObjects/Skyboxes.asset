@@ -16,8 +16,10 @@ MonoBehaviour:
   - enviroment: 0
     skybox: {fileID: 2100000, guid: 7e0433272d40dbb498da53050a8f026b, type: 2}
   - enviroment: 1
-    skybox: {fileID: 2100000, guid: be43cbebc0d844b43ba085c613cc9e6e, type: 2}
+    skybox: {fileID: 2100000, guid: ddbcbb3899687ea469ed4a5fce1532df, type: 2}
   - enviroment: 2
-    skybox: {fileID: 2100000, guid: bc003d4578fb482439cf5bc9c8d7cba2, type: 2}
+    skybox: {fileID: 2100000, guid: 81f714daf7144784b8a2f42f1cd30927, type: 2}
   - enviroment: 3
-    skybox: {fileID: 2100000, guid: be43cbebc0d844b43ba085c613cc9e6e, type: 2}
+    skybox: {fileID: 2100000, guid: 7e0433272d40dbb498da53050a8f026b, type: 2}
+  - enviroment: 4
+    skybox: {fileID: 2100000, guid: ed1387202b1349540a5d6464f0f27488, type: 2}

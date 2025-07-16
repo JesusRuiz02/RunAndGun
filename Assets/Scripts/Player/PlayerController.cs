@@ -12,7 +12,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private int scoreToReset = 0;
-    public TextMeshProUGUI leaderboard;
     [SerializeField] private UImanager _uImanager;
     public static PlayerController instance;
     private string leaderboardId = "CgkIs5ii8MkUEAIQAg";
@@ -32,6 +31,10 @@ public class PlayerController : MonoBehaviour
     private HealthController _healthController = default;
     public float Score => score;
     private bool _isInmune = default;
+
+    [Header("Obstacle Values")]
+    private int _randomObstacleSpawnValue = 6;
+    private int _obstacleValueScore = 0;
     private void Awake()
     {
         if(instance == null)
@@ -66,7 +69,15 @@ public class PlayerController : MonoBehaviour
 
     public void AddScore(float scoreToAdd)
     {
+        if (PlayGamesManager.GetInstance().connectedToGamePlay)
+        {
+            PlayGamesManager.GetInstance().FirstTimeAchievement();
+        }
+        GameManager.instance.SpawnObstacleNPowerUps(35f, OBSTACLE_TYPE.HealPowerUp);
+        GameManager.instance.SpawnObstacleNPowerUps(55f, OBSTACLE_TYPE.ExtraLifePowerUp);
+
         score += scoreToAdd;
+        _obstacleValueScore++;
         scoreToReset += (int)scoreToAdd;
         _scoreText.text = score.ToString();
         if (score >= 100)
@@ -75,15 +86,6 @@ public class PlayerController : MonoBehaviour
             {
                 PlayGamesManager.GetInstance().OneHundredAchievement();
             }
-            GameManager.instance.SpawnObstacleNPowerUps(16f,OBSTACLE_TYPE.HeavyBalloon);
-        }
-        if (score >= 0)
-        {
-            if (PlayGamesManager.GetInstance().connectedToGamePlay)
-            {
-                PlayGamesManager.GetInstance().FirstTimeAchievement();
-            }
-            GameManager.instance.SpawnObstacleNPowerUps(25f,OBSTACLE_TYPE.ShapeBalloon);
         }
         if (score >= 200 && PlayGamesManager.GetInstance().connectedToGamePlay)
         {
@@ -97,11 +99,13 @@ public class PlayerController : MonoBehaviour
         {
             PlayGamesManager.GetInstance().FiveHundredAchievement();
         }
-        GameManager.instance.SpawnObstacleNPowerUps(9f,OBSTACLE_TYPE.BalloonSpawner);
-        GameManager.instance.SpawnObstacleNPowerUps(30f,OBSTACLE_TYPE.PowerUp);
-        GameManager.instance.SpawnObstacleNPowerUps(40f, OBSTACLE_TYPE.HealPowerUp);
-        GameManager.instance.SpawnObstacleNPowerUps(36f, OBSTACLE_TYPE.ExtraLifePowerUp);
-        GameManager.instance.SpawnObstacleNPowerUps(38f, OBSTACLE_TYPE.Door);
+        if(  _obstacleValueScore >= _randomObstacleSpawnValue)
+        {
+            _randomObstacleSpawnValue = UnityEngine.Random.Range(6, 12);
+            _obstacleValueScore = 0;
+            SpawnerBalloon.instance.GetRandomObstacleBalloon();
+        }
+        SpawnerBalloon.instance.GetPooledObject(OBSTACLE_TYPE.Balloon);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -115,16 +119,15 @@ public class PlayerController : MonoBehaviour
         }
         if (other.CompareTag("Wall"))
         {
-            if (other.GetComponent<Door>().IsOpened == false)
-            {
-                other.transform.parent.gameObject.SetActive(false); 
+              
+                other.transform.parent.gameObject.SetActive(false);
+                other.gameObject.SetActive(false);
                 Camera.main.transform.DOMoveY(0.6f, 0.7f, true).SetEase(Ease.OutElastic).SetUpdate(true);
                 Camera.main.transform.DORotate(new Vector3(-90, 0, 0), 0.4f).SetUpdate(true).SetEase(Ease.Flash);
                 AudioManager.instance.SetSound(SOUND_TYPE.WALL_CRASHED);
                 Camera.main.DOShakePosition(0.6f, new Vector3(2, 0, 0), 80, 90f, true).SetDelay(0.5f).SetUpdate(true);
                 GameOver(); 
-            }
-            other.gameObject.SetActive(false);
+            
         }
     }
 
@@ -167,10 +170,6 @@ public class PlayerController : MonoBehaviour
                 // handle success or failure
             });
         }
-        else
-        {
-           this.leaderboard.text = "No connection";
-        }
     }
     private void LoadPlayerScore(string leaderboardId)
     {
@@ -187,7 +186,6 @@ public class PlayerController : MonoBehaviour
                     IScore playerScore = data.PlayerScore;
                     if (playerScore != null)
                     {
-                        leaderboard.text = "Rank: " + playerScore.rank;
                         if (playerScore.rank == -1)
                         {
                             _uImanager.TurnOffLeaderboard();
@@ -196,13 +194,12 @@ public class PlayerController : MonoBehaviour
                     else
                     {
                         _uImanager.TurnOffLeaderboard();
-                        leaderboard.text = "Player not found";
+                
                     }
                 }
                 else
                 {
                     _uImanager.TurnOffLeaderboard();
-                    leaderboard.text = "No connection";
                 }
             });
     }

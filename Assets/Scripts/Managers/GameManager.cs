@@ -24,10 +24,11 @@ public class GameManager : MonoBehaviour
         if ( PlayerController.instance.GetScoreToReset() >= 100)
         {
             Debug.Log("Score Reset");
+            SpawnerBalloon.instance.AddObstacleBalloonsToPool();
             PlayerController.instance.StartResetScore();
             TilePool._Instance.ChangeNextTypeTileToPool();
         }
-        float mod = PlayerController.instance.Score % 75;
+        float mod = PlayerController.instance.Score % 10;
         
         bool isScoreMultipleOf = mod == 0;
         if (isScoreMultipleOf)

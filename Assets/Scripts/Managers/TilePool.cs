@@ -11,16 +11,27 @@ public class TilePool : MonoBehaviour
     [SerializeField] private TileScriptableObjManager _tileScriptableObjManager = default;
     private String lastTileSpawned = default;
     public TileType NextTileToSpawn => _nextTileToSpawn;
-    private bool isBridgeNextTile;
+    public bool isBridgeNextTile;
     private int _amountToPool = 9;
     [SerializeField] private GameObject _tilePrefab = default;
     private Dictionary<string, List<GameObject>> _tileIdToObjects = new();
+
+    public Action<TileType> OntilePoolChange;
 
     private void Awake()
     {
         if (_Instance == null)
         {
             _Instance = this;
+        }
+    }
+
+    public void OnChangeTile(TileType newTiletype)
+    {
+        _nextTileToSpawn = newTiletype;
+        if (OntilePoolChange != null)
+        {
+            OntilePoolChange.Invoke(newTiletype);
         }
     }
 
@@ -38,8 +49,9 @@ public class TilePool : MonoBehaviour
             var values = Enum.GetValues(typeof(TileType));
             nextTile = (TileType)values.GetValue(random.Next(values.Length));
         } while (nextTile == NextTileToSpawn);
-        SkyboxManager.GetInstance.SwitchSkybox((nextTile, 1));
-        _nextTileToSpawn = nextTile;
+       // SkyboxManager.GetInstance.SwitchSkybox((nextTile, 1));
+        OnChangeTile(nextTile);
+
     }
 
     public GameObject GetNextTileToSet(List<GameObject> tiles)
@@ -54,7 +66,9 @@ public class TilePool : MonoBehaviour
                     return objectTile;
                 }
             }
+            
         }
+     
 
         var nonBridgeTiles = tiles.FindAll(t => t.GetComponent<IsBridge>() == null);
 

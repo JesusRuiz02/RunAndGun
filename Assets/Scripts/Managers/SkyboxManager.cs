@@ -17,8 +17,27 @@ public class SkyboxManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     public static SkyboxManager GetInstance => instance;
+
+    private void Start()
+    {
+        SubscriptionToTilePoolManager();
+    }
+
+
+    private void OnTileTypeChanged(TileType tileType)
+    {  
+            SwitchSkybox((tileType, 1));
+    }
+
+    private void SubscriptionToTilePoolManager()
+    {
+        if (TilePool._Instance != null)
+        {
+            TilePool._Instance.OntilePoolChange += OnTileTypeChanged;
+            OnTileTypeChanged(TileType.NormalTile);
+        }
+    }
 
     public void SwitchSkybox(TileType tileType)
     {

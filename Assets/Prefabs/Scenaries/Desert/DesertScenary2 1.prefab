@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPosition: {x: 0, y: 0, z: 125}
   tileType: 1
-  _isBridge: 1
 --- !u!1 &2369511123211151628
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +272,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1190,6 +1189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0015576d2b6a0a24b9d92d98b206ba82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorCollider:
+  - {fileID: 3412144894904116195}
+  - {fileID: 2441986478762261182}
   _triggerString: Open
   _keysList:
   - {fileID: 7188000765054927618}
